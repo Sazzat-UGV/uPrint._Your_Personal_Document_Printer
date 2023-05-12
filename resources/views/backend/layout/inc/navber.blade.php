@@ -29,7 +29,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="{{ asset('assets/backend') }}/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="{{ asset('uploads/user') }}/{{ Auth::user()->user_image }}" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -38,12 +38,14 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="{{ asset('assets/backend') }}/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="{{ asset('uploads/user') }}/{{ Auth::user()->user_image }}" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                            <small class="text-muted">@if (Auth::user()->role_id==1 && Auth::user()->is_system_admin==1)
+                                 Admin
+                            @endif</small>
                           </div>
                         </div>
                       </a>
@@ -76,7 +78,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="{{ route('admin.logout') }}">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
