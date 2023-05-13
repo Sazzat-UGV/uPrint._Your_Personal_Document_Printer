@@ -19,6 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'slug'=>Str::slug('name'),
             'email' => fake()->unique()->safeEmail(),
             'phone'=>fake()->phoneNumber(),
             'user_image'=>'default_user.jpg',

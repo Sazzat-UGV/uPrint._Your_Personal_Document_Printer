@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('role_id')->default(2);
             $table->unsignedInteger('is_system_admin')->default(0);
             $table->string('name');
+            $table->string('slug');
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('user_image')->default('default_user.jpg');
