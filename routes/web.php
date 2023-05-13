@@ -27,10 +27,12 @@ Route::prefix('admin/')->group(function(){
     Route::middleware(['auth','IsSystemAdmin'])->group(function(){
         /*admin dashboard*/
         Route::get('dashboard',[dashboardController::class,'dashboard'])->name('admin.dashboard');
-        /*admin profile modify route*/
+        /*admin profile modification route*/
         Route::get('profile',[adminController::class,'showProfile'])->name('admin.profile');
-        Route::put('profile_image/{slug}',[adminController::class,'saveImage'])->name('admin.profileImage');
+        Route::put('profile_image/{slug}',[adminController::class,'saveImage'])->name('admin.imageUpdate');
         Route::put('profile_data/{slug}',[adminController::class,'updateUser'])->name('admin.profileUpdate');
+        Route::get('change_password',[adminController::class,'changePasswordPage'])->name('admin.changePassPage');
+        Route::post('change_password',[adminController::class,'changePassword'])->name('admin.changePassword');
 
     });
 

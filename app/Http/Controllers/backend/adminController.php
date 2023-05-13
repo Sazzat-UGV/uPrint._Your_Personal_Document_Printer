@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserImageUploadRequest;
 
@@ -15,7 +17,7 @@ class adminController extends Controller
 {
     public function showProfile(){
         $data=User::select(['id','name','slug','phone','email'])->get();
-        return view('backend.pages.account.myProfile',compact('data'));
+        return view('backend.pages.admin.adminProfile',compact('data'));
     }
 
 
@@ -40,6 +42,34 @@ class adminController extends Controller
         ]);
         Toastr::success('Your profile has been Updated');
         return redirect()->route('admin.profile');
+
+    }
+
+
+    public function changePasswordPage(){
+        return view('backend.pages.admin.changePassword');
+    }
+
+
+    public function changePassword(Request $request){
+        $validation=$request->validate([
+            'current_password'=>'required|string|min:8',
+            'password'=>'required|string|min:8|confirmed'
+        ]);
+        $currentPasswordStatus=Hash::check($request->current_password, auth()->user()->password);
+
+        if($currentPasswordStatus){
+            User::findorFail(Auth::user()->id)->update([
+                'password'=>Hash::make($request->password),
+            ]);
+            Toastr::success('Password Updated Successfully!');
+            return redirect()->route('admin.changePassPage');
+        }else{
+            Toastr::error('Current Password does not match with old Password');
+            return redirect()->route('admin.changePassPage');
+        }
+
+
 
     }
 

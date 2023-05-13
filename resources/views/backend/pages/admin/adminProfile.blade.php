@@ -1,10 +1,7 @@
 @extends('backend.layout.master')
 @section('title')
-    Admin Dashboard
+    Admin Profile
 @endsection
-
-@push('admin_style')
-@endpush
 
 @section('content')
     <h4 class="fw-bold py-3 mb-4">Profile</h4>
@@ -20,7 +17,7 @@
                             class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
                         <div class="button-wrapper">
                             @foreach ($data as $item)
-                                <form action="{{ route('admin.profileImage', ['slug' => $item->slug]) }}" method="POST"
+                                <form action="{{ route('admin.imageUpdate', ['slug' => $item->slug]) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
@@ -61,8 +58,8 @@
                             @method('PUT')
                             <div class="row">
                                 <div class="mb-3 col-md-12">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" id="firstName" value="{{ $item->name }}" name="name"
+                                    <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="name" value="{{ $item->name }}" name="name"
                                         class="form-control @error('name')
                                 is-invalid
                                 @enderror" />
@@ -72,7 +69,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3 col-md-12">
-                                    <label for="email" class="form-label">E-mail</label>
+                                    <label for="email" class="form-label">E-mail <span class="text-danger">*</span></label>
                                     <input  type="text" id="email" name="email"
                                     value="{{ $item->email }}" placeholder="youeEmail" class="form-control @error('email')
                                     is-invalid
@@ -83,7 +80,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3 col-md-12">
-                                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                                    <label class="form-label" for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text">BD (+880)</span>
                                         <input type="text" id="phoneNumber" placeholder="yourNumber" name="phoneNumber" value="{{ $item->phone }}"  class="form-control @error('phoneNumber')
@@ -108,6 +105,3 @@
         </div>
     </div>
 @endsection
-
-@push('admin_script')
-@endpush

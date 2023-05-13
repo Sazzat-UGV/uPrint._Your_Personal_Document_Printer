@@ -47,9 +47,9 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
+                      <a class="dropdown-item" href="{{ route('admin.changePassPage') }}">
+                        <i class="bx bx-lock me-2"></i>
+                        <span class="align-middle">Change Password</span>
                       </a>
                     </li>
                     <li>
