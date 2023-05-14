@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\backend\adminController;
 use App\Http\Controllers\backend\auth\loginController;
+use App\Http\Controllers\backend\changeStatusController;
 use App\Http\Controllers\backend\dashboardController;
+use App\Http\Controllers\backend\DepartmentController as BackendDepartmentController;
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,14 +28,23 @@ Route::prefix('admin/')->group(function(){
     Route::get('logout',[loginController::class,'logout'])->name('admin.logout');
 
     Route::middleware(['auth','IsSystemAdmin'])->group(function(){
+
         /*admin dashboard*/
         Route::get('dashboard',[dashboardController::class,'dashboard'])->name('admin.dashboard');
+
         /*admin profile modification route*/
         Route::get('profile',[adminController::class,'showProfile'])->name('admin.profile');
         Route::put('profile_image/{slug}',[adminController::class,'saveImage'])->name('admin.imageUpdate');
         Route::put('profile_data/{slug}',[adminController::class,'updateUser'])->name('admin.profileUpdate');
         Route::get('change_password',[adminController::class,'changePasswordPage'])->name('admin.changePassPage');
         Route::post('change_password',[adminController::class,'changePassword'])->name('admin.changePassword');
+
+        /*Resource Controller*/
+        Route::resource('department',BackendDepartmentController::class);
+
+
+        /*Change Active Status*/
+        Route::get('active_department/{slug}/{status}',[changeStatusController::class,'activeDepartment'])->name('admin.departmentActive');
 
     });
 
