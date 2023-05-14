@@ -11,15 +11,29 @@ Admin Dashboard
 
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
-      <div class="card">
+      <div class="card ">
         <div class="card-body">
           <div class="card-title d-flex align-items-start justify-content-between">
             <div class="avatar flex-shrink-0">
-                <i class="rounded menu-icon tf-icons bx bx-buildings"></i>
+                <i class="menu-icon tf-icons bx bx-buildings"></i>
             </div>
           </div>
           <span class="fw-semibold d-block mb-1">Departments</span>
           <h3 class="card-title mb-2">{{ $department }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-start justify-content-between">
+            <div class="avatar flex-shrink-0">
+                <i class="menu-icon tf-icons bx bxs-graduation"></i>
+            </div>
+          </div>
+          <span class="fw-semibold d-block mb-1">Teachers</span>
+          <h3 class="card-title mb-2">{{ $teacher }}</h3>
         </div>
       </div>
     </div>

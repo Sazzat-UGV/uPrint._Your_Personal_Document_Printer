@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\auth\loginController;
 use App\Http\Controllers\backend\changeStatusController;
 use App\Http\Controllers\backend\dashboardController;
 use App\Http\Controllers\backend\DepartmentController as BackendDepartmentController;
+use App\Http\Controllers\backend\TeacherController;
 use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,10 +42,12 @@ Route::prefix('admin/')->group(function(){
 
         /*Resource Controller*/
         Route::resource('department',BackendDepartmentController::class);
+        Route::resource('teacher',TeacherController::class);
 
 
         /*Change Active Status*/
         Route::get('active_department/{slug}/{status}',[changeStatusController::class,'activeDepartment'])->name('admin.departmentActive');
+        Route::get('active_teacher/{slug}/{status}',[changeStatusController::class,'activeTeacher'])->name('admin.teacherActive');
 
     });
 
