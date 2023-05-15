@@ -6,6 +6,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use GuzzleHttp\Promise\Create;
 use App\Http\Controllers\Controller;
+use App\Models\Subject;
 use App\Models\Teacher;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -49,6 +50,27 @@ class changeStatusController extends Controller
                 'is_active' => 1
             ]);
             Toastr::success('Teacher Activated Successfully!');
+            return back();
+        };
+    }
+
+
+    /*Change Subject Status*/
+    public function activeSubject($slug, $status)
+    {
+        $teacher = Subject::whereSlug($slug)->select('id', 'is_active')->first();
+        if ($status == 1) {
+            $teacher->update([
+                'is_active' => 0
+            ]);
+            Toastr::success('Subject Deactivated Successfully!');
+            return back();
+        }
+        elseif ($status == 0) {
+            $teacher->update([
+                'is_active' => 1
+            ]);
+            Toastr::success('Subject Activated Successfully!');
             return back();
         };
     }

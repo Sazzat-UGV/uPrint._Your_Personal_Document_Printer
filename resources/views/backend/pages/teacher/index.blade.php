@@ -43,7 +43,7 @@ Teacher List
             @if ($teacher->department->is_active==1)
             <tr>
                 <th scope="row">{{ $index+1 }}</th>
-                <td>{{ $teacher->teacher_name }}</td>
+                <td>{{ Str::limit($teacher->teacher_name, 35, '...') }}</td>
                 <td>{{ $teacher->teacher_designation }}</td>
                 <td>{{ $teacher->department->name }}</td>
                 <td>@if ($teacher->is_active==1)

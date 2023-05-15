@@ -14,41 +14,23 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
 {
-    $designation = [
-        'Teaching Assistant',
-        'Senior Lecturer & Chairman',
-        'Asst. Professor & Co-Chairman',
-        'Lecturer',
-    ];
-
     $teachers = [
-        'Md Zahid Akon',
-        'Muntasir Rahman',
-        'Md. Mahadi Hasan Shaon',
-        'Md. Riadul Islam',
-        'Md. Masudur Rahman',
-        'Md. Tariqul Islam',
-        'Partho Sarathi Sarker',
-        'Md Abdur Razzak',
+        'Md Zahid Akon'=>'Teaching Assistant',
+        'Muntasir Rahman'=>'Lecturer',
+        'Md. Mahadi Hasan Shaon'=>'Lecturer',
+        'Md. Riadul Islam'=>'Lecturer',
+        'Md. Masudur Rahman'=>'Lecturer',
+        'Md. Tariqul Islam'=>'Lecturer',
+        'Partho Sarathi Sarker'=>'Asst. Professor & Co-Chairman',
+        'Md Abdur Razzak'=>'Senior Lecturer & Chairman',
     ];
 
-    $totalTeachers = count($teachers);
-    $totalDesignations = count($designation);
-
-    $designation[1] = $teachers[$totalTeachers - 1];
-
-    foreach ($teachers as $key => $teacher) {
-        if ($key === 0 || $key === 6 || $key === 7) {
-            $teacherDesignation = $designation[$key % $totalDesignations];
-        } else {
-            $teacherDesignation = $designation[3];
-        }
-
-        $teacher = Teacher::create([
+    foreach ($teachers as $key => $value) {
+        Teacher::create([
             'department_id' => 9,
-            'teacher_name' => $teacher,
-            'slug' => Str::slug($teacher),
-            'teacher_designation' => $teacherDesignation,
+            'teacher_name' => $key,
+            'slug' => Str::slug($key),
+            'teacher_designation' => $value,
         ]);
     }
 }

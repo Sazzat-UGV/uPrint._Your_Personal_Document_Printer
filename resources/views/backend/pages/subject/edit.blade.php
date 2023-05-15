@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 @section('title')
-    Edit Teacher
+    Edit Subject
 @endsection
 
 @push('admin_style')
@@ -8,7 +8,7 @@
 @endpush
 
 @section('content')
-    @include('backend.layout.inc.breadcumb', ['main_page' => 'Teachers', 'sub_page' => 'Edit Teacher'])
+    @include('backend.layout.inc.breadcumb', ['main_page' => 'Subjects', 'sub_page' => 'Edit Subject'])
 
     <!-- Basic Layout -->
     <div class="col-xxl">
@@ -16,52 +16,56 @@
 
             <div class="card-header d-flex align-items-center">
                 <div class="d-flex justify-content-start">
-                    <a href="{{ route('teacher.index') }}" class="btn btn-primary">
+                    <a href="{{ route('subject.index') }}" class="btn btn-primary">
                         <i class="fa-solid fa-backward"></i>
-                        Back to Teachers
+                        Back to Subjects
                     </a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('teacher.update',$teacher->slug) }}" method="POST">
+                <form action="{{ route('subject.update', $subject->slug) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="department_name">Department Name <span
+                        <label class="col-sm-2 col-form-label" for="semester_id">Select Semester <span
                                 class="text-danger">*</span></label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="department_id" aria-label="Default select example">
-                                @foreach ($departments as $department)
-                                    <option value="{{ $department->id }}" @if ($teacher->department_id==$department->id)
-                                        selected
-                                    @endif>{{ $department->name }} </option>
+                            <select class="form-select" name="semester_id" aria-label="Default select example">
+                                @foreach ($semesters as $semester)
+                                <option value="{{ $semester->id }}"@if ($subject->semester_id==$semester->id)
+                                    selected
+                                @endif >{{ $semester->semester_name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="teacher_name">Teacher Name <span
-                            class="text-danger">*</span></label>
+                        <label class="col-sm-2 col-form-label" for="subject_name">Subject Name <span
+                                class="text-danger">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text"  id="teacher_name" name="Teacher_name" value="{{ $teacher->teacher_name }}" placeholder="enter teacher name" class="form-control @error('Teacher_name')
+                            <input type="text" id="subject_name" value="{{ $subject->subject_name }}" name="subject_name"
+                                placeholder="enter subject name"
+                                class="form-control @error('subject_name')
                             is-invalid
                             @enderror" />
-                            @error('Teacher_name')
-                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                            @error('subject_name')
+                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="teacher_designation">Teacher Designation<span
-                            class="text-danger">*</span></label>
+                        <label class="col-sm-2 col-form-label" for="subject_code">Subject Code <span
+                                class="text-danger">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text"  id="teacher_designation" name="Teacher_designation" value="{{ $teacher->teacher_designation }}" placeholder="enter teacher designation" class="form-control @error('Teacher_designation')
+                            <input type="text"  value="{{ $subject->subject_code }}" id="subject_code" name="subject_code"
+                                placeholder="enter subject code"
+                                class="form-control @error('subject_code')
                             is-invalid
                             @enderror" />
-                            @error('Teacher_designation')
-                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                            @error('subject_code')
+                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror
                         </div>
                     </div>
@@ -71,11 +75,13 @@
                             Active or Inactive
                         </label>
                         <div class="col-sm-10 form-check form-switch">
-                            <input type="checkbox" class="form-check-input" name="is_active" role="switch" id="activeStatus" @if ($teacher->is_active)
+                            <input type="checkbox" class="form-check-input" name="is_active" role="switch" id="activeStatus" @if ($subject->is_active)
                             checked
                             @endif>
                         </div>
+
                     </div>
+
 
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
@@ -87,4 +93,3 @@
         </div>
     </div>
 @endsection
-

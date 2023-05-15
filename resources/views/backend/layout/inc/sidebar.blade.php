@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-      <a href="index.html" class="app-brand-link">
+      <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
         <span class="app-brand-text demo menu-text fw-bolder ms-2">uPrint <span class="text-danger">.</span></span>
       </a>
 
@@ -58,6 +58,28 @@
           <li class="menu-item">
             <a href="{{ route('teacher.create') }}" class="menu-link">
               <div data-i18n="Without menu">Add New Teacher</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Subject -->
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-book"></i>
+
+          <div data-i18n="Layouts">Subjects</div>
+        </a>
+
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('subject.index') }}" class="menu-link">
+              <div data-i18n="Without menu">Subject List</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('subject.create') }}" class="menu-link">
+              <div data-i18n="Without menu">Add New Subject</div>
             </a>
           </li>
         </ul>
