@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('semester_id')->constrained('semesters')->onDelete('cascade');
-            $table->string('subject_name')->unique();
+            $table->foreignId('department_id')->constrained('departments')->onDelete('cascade');
+            $table->string('subject_name');
             $table->string('slug');
             $table->string('subject_code')->unique();
             $table->boolean('is_active')->default(true);

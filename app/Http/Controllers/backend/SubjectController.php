@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubjectCreateRequest;
 use App\Http\Requests\SubjectUpdateRequest;
+use App\Models\Department;
 use App\Models\Semester;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -18,7 +19,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects=Subject::with('semester')->latest('id')->select('id','semester_id', 'slug','subject_name','subject_code','updated_at','is_active')->get();
+        $subjects=Subject::with('semester','department')->latest('id')->select('id','semester_id','department_id', 'slug','subject_name','subject_code','updated_at','is_active')->get();
         return view('backend.pages.subject.index',compact('subjects'));
     }
 
@@ -29,7 +30,8 @@ class SubjectController extends Controller
     public function create()
     {
         $semesters=Semester::select('id','semester_name')->get();
-        return view('backend.pages.subject.create',compact('semesters'));
+        $departments=Department::where('is_active',1)->latest('id')->select('id','name')->get();
+        return view('backend.pages.subject.create',compact('semesters','departments'));
     }
 
     /**
@@ -39,6 +41,7 @@ class SubjectController extends Controller
     {
         Subject::create([
             'semester_id'=>$request->semester_id,
+            'department_id'=>$request->department_id,
             'subject_name'=>$request->subject_name,
             'slug'=>Str::slug($request->subject_name),
             'subject_code'=>$request->subject_code,
@@ -62,8 +65,9 @@ class SubjectController extends Controller
     public function edit(string $slug)
     {
         $subject=Subject::whereSlug($slug)->first();
+        $departments=Department::where('is_active',1)->latest('id')->select('id','name')->get();
         $semesters=Semester::select('id','semester_name')->get();
-        return view('backend.pages.subject.edit',compact('subject','semesters'));
+        return view('backend.pages.subject.edit',compact('subject','semesters','departments'));
     }
 
     /**
@@ -74,6 +78,7 @@ class SubjectController extends Controller
         $subject=Subject::whereSlug($slug)->first();
         $subject->update([
             'semester_id'=>$request->semester_id,
+            'department_id'=>$request->department_id,
             'subject_name'=>$request->subject_name,
             'slug'=>Str::slug($request->subject_name),
             'subject_code'=>$request->subject_code,

@@ -84,36 +84,42 @@ class SubjectSeeder extends Seeder
             $counter++;
             if ($counter >= 1 && $counter <= 4) {
                 $val = 8;
+                $dept=9;
             }
             elseif ($counter >= 5 && $counter <= 10) {
                 $val = 7;
+                $dept=9;
             }
             elseif ($counter >= 11 && $counter <= 16) {
                 $val = 6;
+                $dept=9;
             }
             elseif ($counter >= 17 && $counter <= 22) {
                 $val = 5;
+                $dept=9;
             }
             elseif ($counter >= 23 && $counter <= 28) {
                 $val = 4;
+                $dept=9;
             }
             elseif ($counter >= 29 && $counter <= 34) {
                 $val = 3;
+                $dept=9;
             }
             elseif ($counter >= 35 && $counter <= 40) {
                 $val = 2;
+                $dept=9;
             }
             elseif ($counter >= 41 && $counter <= 47) {
                 $val = 1;
-            }
-            else {
-                $val = 0;
+                $dept=9;
             }
             Subject::create([
                 'subject_name'=> $value,
                 'slug'=> Str::slug($value),
                 'subject_code' => $key,
                 'semester_id' => $val,
+                'department_id'=>$dept,
             ]);
         }
     }

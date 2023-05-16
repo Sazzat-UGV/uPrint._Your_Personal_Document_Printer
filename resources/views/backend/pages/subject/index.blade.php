@@ -30,7 +30,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Last Modified</th>
+                        <th>Department</th>
                         <th>Semester</th>
                         <th>Subject Name</th>
                         <th>Subject Code</th>
@@ -40,9 +40,10 @@
                 </thead>
                 <tbody>
                     @foreach ($subjects as $index => $subject)
+                    @if($subject->department->is_active==1)
                         <tr>
                             <th scope="row">{{ $index + 1 }}</th>
-                            <td>{{ $subject->updated_at->format('d M Y') }}</td>
+                            <td>{{ $subject->department->name }}</td>
                             <td>{{ $subject->semester->semester_name }}</td>
                             <td>{{ Str::limit($subject->subject_name, 25, '...') }}</td>
                             <td>{{ $subject->subject_code }}</td>
@@ -76,6 +77,7 @@
                                 </div>
                             </td>
                         </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>

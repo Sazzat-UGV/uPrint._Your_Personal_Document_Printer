@@ -36,6 +36,17 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="semester_id">Select Department <span
+                                class="text-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <select class="form-select" name="department_id" aria-label="Default select example">
+                               @foreach ($departments as $department)
+                               <option value="{{ $department->id }}">{{ $department->name }}</option>
+                               @endforeach
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="subject_name">Subject Name <span
