@@ -62,7 +62,7 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                    <span class="app-brand-text demo menu-text fw-bolder ms-2">uPrint <span class="text-danger">.</span></span>
+                    <span class="app-brand-text demo menu-text fw-bolder ms-2 pt-2">uPrint <span class="text-danger">.</span></span>
               </div>
               <form id="formAuthentication" class="mb-3" action="{{ route('admin.login') }}" method="POST">
                 @csrf
