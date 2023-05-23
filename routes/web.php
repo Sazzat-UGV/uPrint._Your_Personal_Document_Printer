@@ -8,6 +8,8 @@ use App\Http\Controllers\backend\DepartmentController as BackendDepartmentContro
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\TeacherController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\frontend\auth\LoginController as AuthLoginController;
+use App\Http\Controllers\frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,18 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+/*Home page*/
+Route::get('',[HomeController::class,'homePage'])->name('HomePage');
+Route::get('login',[AuthLoginController::class,'studentloginPage'])->name('student.LoginPage');
+
+
+
+
+
+
+
 
 
 /*admin auth route*/

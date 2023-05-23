@@ -1,0 +1,217 @@
+.header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.nav-link{
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+}
+  
+  .nav-item:nth-last-child(-n+2) .nav-link {
+    background-color: #DEE1E3;
+    color: #2b2a2a;
+    border-radius: 50px;
+    padding: 8px 20px;
+    margin-left: 10px;
+
+  }
+  
+  .nav-item:nth-last-child(-n+2) .nav-link:hover {
+    background-color: #DEE1E3;
+  }
+
+
+
+  .upload_body{
+    background-color: #f7f7f7;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .upload_body-right h1{
+    font-weight: 800;
+    font-size: 70px;
+    font-family: 'Poppins', sans-serif; 
+    margin-top: 120px; 
+  }
+
+  .about h1{
+    font-size: 50px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif; 
+    color:#6b6b6b;
+  }
+
+  .about p{
+    font-size: 20px;
+  }
+
+
+  #pricing h1{
+    font-size: 50px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif; 
+    color:#575757;
+  }
+  #pricing{
+    background-color: #f7f7f7;
+  }
+
+
+  .pricing-content{position:relative;}
+  .pricing_design{
+      position: relative;
+      margin: 0px 15px;
+  }
+  .pricing_design .single-pricing{
+      background:#554c86;
+      padding: 60px 40px;
+      border-radius:30px;
+      box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
+      position: relative;
+      z-index: 1;
+  }
+  .pricing_design .single-pricing:before{
+      content: "";
+      background-color: #fff;
+      width: 100%;
+      height: 100%;
+      border-radius: 18px 18px 190px 18px;
+      border: 1px solid #eee;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+  }
+  .price-head{}
+  .price-head h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 600;
+  }
+  .price-head h1 {
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 5px;
+  }
+  .price-head span{}
+  
+  .single-pricing ul{list-style:none;margin-top: 30px;}
+  .single-pricing ul li {
+    line-height: 36px;
+  }
+  .single-pricing ul li i {
+    background: #554c86;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    font-size: 11px;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 6px;
+  }
+  .pricing-price{}
+  
+  .price_btn {
+    background: #6a5faa;
+    padding: 10px 30px;
+    color: #fff;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 2px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  .price_btn:hover{
+    background:#453f68;
+    color: white;
+  }
+  a{
+  text-decoration:none; 
+  
+  }
+  
+  .section-title {
+      margin-bottom: 60px;
+  }
+  .text-center {
+      text-align: center!important;
+  }
+
+
+  #policy h1{
+    font-size: 50px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif; 
+    color:#6b6b6b;
+  }
+
+
+  .contact{
+    background-color: #f7f7f7;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .contact h1{
+    font-size: 50px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif; 
+    color:#575757;
+  }
+
+  .contact-main{
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 50px 15px;
+}
+.con-form .form-group{
+  margin-bottom: 17px;
+}
+.con-form .form-group input{
+  border: none;
+  border-radius: 50px;
+  padding: 12px 16px;
+}
+
+.con-form .form-group textarea{
+  border: none;
+  border-radius: 5px;
+}
+.con-form .form-group label{
+  display: block;
+  margin-bottom: 5px;
+}
+.btn{
+  padding: 7px 100px;
+  border-radius: 50px;
+}
+
+
+  @media (max-width: 992px) {
+    .nav-item:nth-last-child(-n+2) .nav-link {
+        margin-top: 5px;
+    }
+    .upload_body-right h1{
+      font-weight: 800;
+      font-size: 40px;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 80px;
+    }
+  }
+
+
+  @media(max-width:767px){
+    .upload_body-right h1{
+      font-weight: 800;
+      font-size: 50px;
+      font-family: 'Poppins', sans-serif;
+    }
+  }
+
+

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('email')->unique();
             $table->string('phone')->unique();
+            $table->unsignedBigInteger('student_id')->nullable()->unique();
             $table->string('user_image')->default('default_user.jpg');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
