@@ -21,7 +21,7 @@
         <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="{{ asset('assets/backend') }}/img/favicon/favicon.ico" />
     <link rel="stylesheet" href="{{ asset('assets/frontend/home') }}/css/style.css" />
-    <title>Home Page</title>
+    <title>uPrint</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiar">
@@ -52,6 +52,9 @@
               <a class="nav-link" href="#policy">Policy</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#pricing">Pricing</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
             </li>
 
@@ -59,7 +62,7 @@
               <a class="nav-link" href="{{ route('student.LoginPage') }}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Register</a>
+              <a class="nav-link" href="{{ route('student.RegistrationPage') }}">Register</a>
             </li>
           </ul>
         </div>

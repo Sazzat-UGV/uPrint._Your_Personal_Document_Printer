@@ -26,6 +26,24 @@ a {
 h2 {
   font-size: 20px; }
 
+  @media (min-width:990px) and (max-width: 1200px) {
+    .pm{
+      padding-top: 100px;
+    }
+  }
+
+
+.pr{
+    padding-top: 40px;
+  }
+  @media (min-width:768px) and (max-width: 990px) {
+    .pp{
+      padding-top: 140px;
+    }
+  }
+
+
+
 
   @media (max-width: 768px){
     .pt{
@@ -40,7 +58,7 @@ h2 {
   width: 50%; }
   @media (max-width: 1199.98px) {
     .content .contents, .content .bg {
-      width: 100%; } 
+      width: 100%; }
       .pt{
         padding-top: 15px;
       }}

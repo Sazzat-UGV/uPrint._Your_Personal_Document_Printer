@@ -12,12 +12,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/auth/login & registration') }}/css/bootstrap.min.css">
-    <!-- Favicon -->
+         <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/backend') }}/img/favicon/favicon.ico" />
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/auth/login & registration') }}/css/style.css">
 
-    <title>User Login</title>
+    <title>User Registration</title>
   </head>
   <body>
 
@@ -26,30 +26,43 @@
   <div class="content">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 text-center">
-          <img src="{{ asset('assets/frontend/auth/login & registration') }}/images/login.png" alt="Image" class="img-responsive w-100 p-0">
+        <div class="col-md-6 ">
+          <img src="{{ asset('assets/frontend/auth/login & registration') }}//images/registration.png" alt="Image" class="img-fluid pp">
         </div>
-        <div class="col-md-6 contents pt" >
+        <div class="col-md-6 contents">
           <div class="row justify-content-center">
-            <div class="col-md-8 pm">
-              <div class="mb-4 pt-3">
-              <h3>Sign In to <strong>uPrint<span class="text-danger">.</span></strong></h3>
+            <div class="col-md-8 pr">
+              <div class="mb-4">
+              <h3>Sign Up to <strong>uPrint<span class="text-danger">.</span></strong></h3>
             </div>
             <form action="#" method="post">
-              <div class="form-group first">
-                <label for="student_id">Student ID</label>
-                <input type="text" class="form-control" id="student_id" >
-
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="username">
               </div>
-              <div class="form-group last mb-4">
+              <div class="form-group">
+                <label for="student_Id">Student ID</label>
+                <input type="text" class="form-control" id="student_Id">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="email">
+              </div>
+              <div class="form-group ">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password">
               </div>
+              <div class="form-group mb-5 ">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password_confirmation" class="form-control" id="confirm_password">
+              </div>
 
-              <input type="submit" value="Sign In" class="btn text-white btn-block btn-primary">
+
+              <input type="submit" value="Sign Up" class="btn text-white btn-block btn-danger">
               <div class="form-group pt-2">
                 <a href="{{ route('HomePage') }}" style="text-decoration: none; font-size: 15px" ><span class="text-muted" >Back to Home</span></a>
               </div>
+
             </form>
             </div>
           </div>
