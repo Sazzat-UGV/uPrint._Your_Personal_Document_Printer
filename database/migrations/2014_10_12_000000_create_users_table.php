@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('is_system_admin')->default(0);
             $table->string('name');
             $table->string('slug');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('phone')->unique();
             $table->unsignedBigInteger('student_id')->nullable()->unique();
             $table->string('user_image')->default('default_user.jpg');

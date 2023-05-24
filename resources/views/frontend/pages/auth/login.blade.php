@@ -16,7 +16,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/backend') }}/img/favicon/favicon.ico" />
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/auth/login & registration') }}/css/style.css">
-
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <title>User Login</title>
   </head>
   <body>
@@ -65,5 +65,8 @@
     <script src="{{ asset('assets/frontend/auth/login & registration') }}/js/popper.min.js"></script>
     <script src="{{ asset('assets/frontend/auth/login & registration') }}/js/bootstrap.min.js"></script>
     <script src="{{ asset('assets/frontend/auth/login & registration') }}/js/main.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
   </body>
 </html>

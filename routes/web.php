@@ -30,6 +30,7 @@ Route::get('',[HomeController::class,'homePage'])->name('HomePage');
 Route::get('login',[AuthLoginController::class,'studentloginPage'])->name('student.LoginPage');
 
 Route::get('registration',[RegistrationController::class,'studentRegistrationPage'])->name('student.RegistrationPage');
+Route::post('registration',[RegistrationController::class,'studentRegistration'])->name('student.Registration');
 
 
 

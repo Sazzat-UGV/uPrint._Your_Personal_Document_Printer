@@ -35,26 +35,52 @@
               <div class="mb-4">
               <h3>Sign Up to <strong>uPrint<span class="text-danger">.</span></strong></h3>
             </div>
-            <form action="#" method="post">
+            <form action="{{ route('student.Registration') }}" method="post">
+                @csrf
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="username">
+                <input type="text"  name="name" class="form-control @error('name')
+                is-invalid
+                @enderror">
+                @error('name')
+                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
               </div>
+
               <div class="form-group">
                 <label for="student_Id">Student ID</label>
-                <input type="text" class="form-control" id="student_Id">
+                <input type="text" name="student_Id"  class="form-control @error('student_Id')
+                is-invalid
+                @enderror">
+                @error('student_Id')
+                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
               </div>
+
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="email">
+                <input type="text"  name="phone" class="form-control @error('phone')
+                is-invalid
+                @enderror" >
+                @error('phone')
+                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
               </div>
+
+
               <div class="form-group ">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" name="password" class="form-control @error('password')
+                is-invalid
+                @enderror">
+                @error('password')
+                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
               </div>
+
               <div class="form-group mb-5 ">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password_confirmation" class="form-control" id="confirm_password">
+                <label for="password_confirmation">Confirm Password</label>
+                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
               </div>
 
 
