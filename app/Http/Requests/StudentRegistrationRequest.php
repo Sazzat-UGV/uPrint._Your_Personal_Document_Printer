@@ -23,9 +23,9 @@ class StudentRegistrationRequest extends FormRequest
     {
         return [
             'name'=>'required|string|max:255',
-            'student_Id'=>'required|digits_between:4,12',
-            'phone'=>'required|digits:11',
-            'password'=>'required|confirmed|min:6'
+            'student_Id'=>'required|numeric|digits_between:4,12',
+            'phone'=>'required|numeric|digits:11',
+            'password'=>'required|string|confirmed|min:6'
         ];
     }
 }

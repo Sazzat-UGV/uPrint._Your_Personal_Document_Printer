@@ -17,7 +17,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/auth/login & registration') }}/css/style.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-    <title>User Login</title>
+    <title>Student Login</title>
   </head>
   <body>
 
@@ -35,15 +35,21 @@
               <div class="mb-4 pt-3">
               <h3>Sign In to <strong>uPrint<span class="text-danger">.</span></strong></h3>
             </div>
-            <form action="#" method="post">
+            <form action="{{ route('student.Login') }}" method="post">
+                @csrf
               <div class="form-group first">
                 <label for="student_id">Student ID</label>
-                <input type="text" class="form-control" id="student_id" >
+                <input type="text" name="student_id"  id="student_id" class="form-control @error('student_id')
+                is-invalid
+                @enderror">
+                @error('student_id')
+                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
 
               </div>
               <div class="form-group last mb-4">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" name="password" class="form-control" id="password">
               </div>
 
               <input type="submit" value="Sign In" class="btn text-white btn-block btn-primary">

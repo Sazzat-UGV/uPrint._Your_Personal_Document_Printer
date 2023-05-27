@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 @section('title')
-User Dashboard
+Student Dashboard
 @endsection
 
 @push('user_style')

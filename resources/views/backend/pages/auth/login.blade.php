@@ -75,7 +75,7 @@
                     placeholder="Enter your email"
                     autofocus
                     class="form-control @error('email')
-                    is_invalid
+                    is-invalid
                     @enderror"
                   />
                   @error('email')

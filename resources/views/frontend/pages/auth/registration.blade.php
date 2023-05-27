@@ -17,7 +17,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/auth/login & registration') }}/css/style.css">
 
-    <title>User Registration</title>
+    <title>Student Registration</title>
   </head>
   <body>
 
