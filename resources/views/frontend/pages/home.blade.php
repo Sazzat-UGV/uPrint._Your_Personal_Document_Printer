@@ -84,7 +84,7 @@
           </div>
           <div
             class="col-lg-6 col-md-6 col-sm-12 text-center upload_body-right">
-            <h1>A simple Solution to Print Your Documents</h1>
+            <h1>A Simple Solution to Print Your Documents</h1>
           </div>
         </div>
       </div>

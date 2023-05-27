@@ -36,7 +36,7 @@ Route::post('registration',[RegistrationController::class,'studentRegistration']
 
 
 
-
+Route::view('test', 'frontend.pages.dashboard');
 
 
 
