@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\changeStatusController;
 use App\Http\Controllers\backend\dashboardController;
 use App\Http\Controllers\backend\DepartmentController as BackendDepartmentController;
 use App\Http\Controllers\backend\GeneralSetting;
+use App\Http\Controllers\backend\SemesterController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\TeacherController;
 use App\Http\Controllers\DepartmentController;
@@ -81,6 +82,7 @@ Route::prefix('admin/')->group(function () {
         Route::resource('department', BackendDepartmentController::class);
         Route::resource('teacher', TeacherController::class);
         Route::resource('subject', SubjectController::class);
+        Route::resource('semester',SemesterController::class);
 
 
         /*Change Active Status*/
