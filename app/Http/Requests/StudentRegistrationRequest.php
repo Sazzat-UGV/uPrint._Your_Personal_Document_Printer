@@ -22,7 +22,7 @@ class StudentRegistrationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|string|max:255',
+            'name'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255',
             'student_Id'=>'required|numeric|digits_between:4,12',
             'phone'=>'required|numeric|digits:11',
             'password'=>'required|string|confirmed|min:6'

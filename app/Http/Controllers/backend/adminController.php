@@ -16,10 +16,9 @@ use App\Http\Requests\UserImageUploadRequest;
 class adminController extends Controller
 {
     public function showProfile(){
-        $data=User::select(['id','name','slug','phone','email'])->get();
+        $data=User::where('role_id',1)->select(['id','name','slug','phone','email'])->get();
         return view('backend.pages.admin.adminProfile',compact('data'));
     }
-
 
     public function saveImage(UserImageUploadRequest $request , $slug){
         $user=User::whereslug($slug)->first();
@@ -63,7 +62,7 @@ class adminController extends Controller
                 'password'=>Hash::make($request->password),
             ]);
             Toastr::success('Password Updated Successfully!');
-            return redirect()->route('admin.changePassPage');
+            return redirect()->route('admin.dashboard');
         }else{
             Toastr::error('Current Password does not match with old Password');
             return redirect()->route('admin.changePassPage');

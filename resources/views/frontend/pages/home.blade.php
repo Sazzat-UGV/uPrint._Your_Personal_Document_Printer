@@ -23,9 +23,11 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/home') }}/css/style.css" />
 
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
     <title>uPrint</title>
   </head>
   <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiar">
       <div class="container">
         <a class="navbar-brand text-black header" href="#home"
@@ -51,10 +53,10 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#policy">Policy</a>
+                <a class="nav-link" href="#pricing">Pricing</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#pricing">Pricing</a>
+              <a class="nav-link" href="#policy">Policy</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
@@ -95,7 +97,9 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 text-center">
             <h1 class=" text-center ">ABOUT US</h1>
-            <p class="pt-3 text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, ratione? Fuga dolore aperiam maxime optio aliquid, voluptatem placeat numquam delectus adipisci dignissimos fugiat et enim ratione pariatur modi, distinctio laboriosam odit ipsa. Voluptatem labore assumenda officiis amet temporibus alias commodi similique enim debitis sapiente consequuntur earum facere nihil eos esse perspiciatis, rem reprehenderit! Neque molestias natus inventore at voluptatibus beatae sunt, harum porro vero ut a ab culpa nostrum quibusdam delectus recusandae voluptate tempora explicabo! Quidem dolorum quas libero quam quis voluptatum labore sequi officia excepturi at earum nostrum distinctio illum dolorem dignissimos velit deleniti beatae, suscipit facilis asperiores. Eveniet.</p>
+            @foreach ($info as $item)
+            <p class="pt-3 text-center">{{ $item->about_us }}</p>
+            @endforeach
           </div>
         </div>
       </div>
@@ -153,7 +157,9 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 text-center">
             <h1 class=" text-center ">OUR POLICY</h1>
-            <p class="pt-3 text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, ratione? Fuga dolore aperiam maxime optio aliquid, voluptatem placeat numquam delectus adipisci dignissimos fugiat et enim ratione pariatur modi, distinctio laboriosam odit ipsa. Voluptatem labore assumenda officiis amet temporibus alias commodi similique enim debitis sapiente consequuntur earum facere nihil eos esse perspiciatis, rem reprehenderit! Neque molestias natus inventore at voluptatibus beatae sunt, harum porro vero ut a ab culpa nostrum quibusdam delectus recusandae voluptate tempora explicabo! Quidem dolorum quas libero quam quis voluptatum labore sequi officia excepturi at earum nostrum distinctio illum dolorem dignissimos velit deleniti beatae, suscipit facilis asperiores. Eveniet.</p>
+            @foreach ($info as $item)
+            <p class="pt-3 text-center">{{ $item->our_policy }}</p>
+    @endforeach
           </div>
         </div>
       </div>
@@ -230,5 +236,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
+
   </body>
 </html>

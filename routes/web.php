@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\auth\loginController;
 use App\Http\Controllers\backend\changeStatusController;
 use App\Http\Controllers\backend\dashboardController;
 use App\Http\Controllers\backend\DepartmentController as BackendDepartmentController;
+use App\Http\Controllers\backend\GeneralSetting;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\TeacherController;
 use App\Http\Controllers\DepartmentController;
@@ -73,6 +74,9 @@ Route::prefix('admin/')->group(function () {
         Route::get('change_password', [adminController::class, 'changePasswordPage'])->name('admin.changePassPage');
         Route::post('change_password', [adminController::class, 'changePassword'])->name('admin.changePassword');
 
+        /*general Setting route*/
+        Route::get('general_setting',[GeneralSetting::class,'settingPage'])->name('admin.generalSettingPage');
+        Route::put('general_setting/{id}',[GeneralSetting::class,'getSettings'])->name('admin.getGeneralSetting');
         /*Resource Controller*/
         Route::resource('department', BackendDepartmentController::class);
         Route::resource('teacher', TeacherController::class);
