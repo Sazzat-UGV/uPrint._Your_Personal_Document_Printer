@@ -20,6 +20,9 @@ a {
 /* .content {
   padding: 2.2rem 0; } */
 
+select{
+background-color: #e8d90d;
+  }
 .pt{
   padding-top: 150px;
 }
@@ -95,7 +98,8 @@ h2 {
     border: none;
     padding: 0;
     font-size: 20px;
-    border-radius: 0; }
+    border-radius: 0;
+    background-color: #F8FAFB; }
     .content .contents .form-control:active, .content .contents .form-control:focus, .content .bg .form-control:active, .content .bg .form-control:focus {
       outline: none;
       -webkit-box-shadow: none;
