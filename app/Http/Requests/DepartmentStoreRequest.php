@@ -23,6 +23,7 @@ class DepartmentStoreRequest extends FormRequest
     {
         return [
             'name'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255|unique:departments,name',
+            'department_full_name'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255|unique:departments,full_name',
         ];
     }
 }

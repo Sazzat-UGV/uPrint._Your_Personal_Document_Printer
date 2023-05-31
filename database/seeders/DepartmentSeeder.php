@@ -15,21 +15,22 @@ class DepartmentSeeder extends Seeder
     public function run(): void
     {
        $departments=[
-        'Social Science',
-        'Mathematics',
-        'Physics & Astronomy',
-        'English',
-        'Business Administration',
-        'Mechanical',
-        'Civil',
-        'EEE',
-        'CSE',
+        'Social Science'=>'Social Science',
+        'Mathematics'=>'Mathematics',
+        'Physics & Astronomy'=>'Physics & Astronomy',
+        'English'=>'English',
+        'Business Administration'=>'Business Administration',
+        'Mechanical'=>'Mechanical Engineering',
+        'Civil'=>'Civil Engineering',
+        'EEE'=>'Electrical and Electronics Engineering',
+        'CSE'=>'Computer Science and Engineering',
        ];
 
-       foreach($departments as $department){
+       foreach($departments as $key=>$value){
         Department::create([
-            'name'=>$department,
-            'slug'=>Str::slug($department)
+            'name'=>$key,
+            'full_name'=>$value,
+            'slug'=>Str::slug($key)
         ]);
        }
     }

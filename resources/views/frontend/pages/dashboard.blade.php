@@ -8,8 +8,7 @@ Student Dashboard
 @endpush
 
 @section('content')
-fdkfdkfdkfdk
-dlfs
+{{ Auth::user() }}
 
 @endsection
 

@@ -23,6 +23,7 @@ class DepartmentUpdateRequest extends FormRequest
     {
         return [
             'name'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255',
+            'department_full_name'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255',
             'is_active'=>'nullable'
         ];
     }

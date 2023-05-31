@@ -27,7 +27,7 @@ Edit Department
             @csrf
             @method('PUT')
             <div class="row mb-3">
-              <label class="col-sm-2 col-form-label" for="department_name">Department Name <span class="text-danger">*</span></label>
+              <label class="col-sm-2 col-form-label" for="department_name">Department <span class="text-danger">*</span></label>
               <div class="col-sm-10">
                 <input type="text"  id="department_name" name="name" value="{{ $department->name }}" placeholder="enter department name" class="form-control @error('name')
                 is-invalid
@@ -37,6 +37,17 @@ Edit Department
                 @enderror
               </div>
             </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="department_full_name">Department Full Name <span class="text-danger">*</span></label>
+                <div class="col-sm-10">
+                  <input type="text"  id="department_full_name" name="department_full_name" value="{{ $department->full_name }}" placeholder="enter department full name" class="form-control @error('department_full_name')
+                  is-invalid
+                  @enderror"/>
+                  @error('department_full_name')
+                  <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                  @enderror
+                </div>
+              </div>
             <div class=" row mb-3">
                 <label for="activeStatus" class="col-sm-2 col-form-label">
                     Active or Inactive

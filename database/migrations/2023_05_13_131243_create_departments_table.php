@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('full_name')->unique();
             $table->string('slug');
             $table->boolean('is_active')->default(true);
             $table->timestamps();

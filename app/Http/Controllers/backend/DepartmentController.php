@@ -17,7 +17,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments=Department::latest('id')->select('id','name','slug','updated_at','is_active')->get();
+        $departments=Department::latest('id')->select('id','name','slug','full_name','is_active')->get();
         return view('backend.pages.department.index',compact('departments'));
     }
 
@@ -34,8 +34,10 @@ class DepartmentController extends Controller
      */
     public function store(DepartmentStoreRequest $request)
     {
+
         Department::create([
             'name'=>$request->name,
+            'full_name'=>$request->department_full_name,
             'slug'=>Str::slug($request->name),
         ]);
         Toastr::success('Department Added Successfully!');
@@ -67,6 +69,8 @@ class DepartmentController extends Controller
         $department=Department::whereSlug($slug)->first();
         $department->update([
             'name'=>$request->name,
+            'full_name'=>$request->department_full_name,
+            'slug'=>Str::slug($request->name),
             'is_active'=>$request->filled('is_active'),
         ]);
 

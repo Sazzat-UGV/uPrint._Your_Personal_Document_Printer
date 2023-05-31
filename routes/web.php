@@ -3,6 +3,7 @@
 use App\Http\Controllers\backend\adminController;
 use App\Http\Controllers\backend\auth\loginController;
 use App\Http\Controllers\backend\changeStatusController;
+use App\Http\Controllers\backend\CoverPageContoller;
 use App\Http\Controllers\backend\dashboardController;
 use App\Http\Controllers\backend\DepartmentController as BackendDepartmentController;
 use App\Http\Controllers\backend\GeneralSetting;
@@ -45,6 +46,8 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
 
     Route::get('dashboard', [FrontendDashboardController::class, 'dashboard'])->name('student.dashboard');
     Route::get('logout', [AuthLoginController::class, 'logout'])->name('student.logout');
+
+    Route::get('cover_page_form',[CoverPageContoller::class,'getCoverPageForm'])->name('student.GetCoverPageForm');
 });
 
 

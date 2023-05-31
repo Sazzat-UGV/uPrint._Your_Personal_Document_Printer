@@ -31,8 +31,8 @@ Department List
         <thead>
             <tr>
                 <th>#</th>
-                <th>Last Modified</th>
                 <th>Department Name</th>
+                <th>Full Name</th>
                 <th>Status</th>
                 <th>Options</th>
             </tr>
@@ -41,8 +41,8 @@ Department List
             @foreach ($departments as $index=>$department)
                 <tr>
                     <th scope="row">{{ $index+1 }}</th>
-                    <td>{{ $department->updated_at->format('d M Y') }}</td>
                     <td>{{ $department->name }}</td>
+                    <td>{{ Str::limit($department->full_name, 45, '...') }}</td>
                     <td>@if ($department->is_active==1)
                         <a class="btn" href="{{ route('admin.departmentActive',['slug'=>$department->slug,'status'=>'1']) }}"><span class="badge bg-success">Active</span></a>
                         @elseif ($department->is_active==0)
