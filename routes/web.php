@@ -47,7 +47,11 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
     Route::get('dashboard', [FrontendDashboardController::class, 'dashboard'])->name('student.dashboard');
     Route::get('logout', [AuthLoginController::class, 'logout'])->name('student.logout');
 
-    Route::get('cover_page_form',[CoverPageContoller::class,'getCoverPageForm'])->name('student.GetCoverPageForm');
+    Route::get('cover_page_form', [CoverPageContoller::class, 'getCoverPageForm'])->name('student.GetCoverPageForm');
+    Route::post('preview_cover_page', [CoverPageContoller::class, 'PreviewCoverPage'])->name('student.PreviewCoverPage');
+
+    /*AJAX Call */
+    Route::get('subject/ajax/{semester_id}', [CoverPageContoller::class, 'loadSubjectAjax'])->name('loadSubject.ajax');
 });
 
 
@@ -79,13 +83,13 @@ Route::prefix('admin/')->group(function () {
         Route::post('change_password', [adminController::class, 'changePassword'])->name('admin.changePassword');
 
         /*general Setting route*/
-        Route::get('general_setting',[GeneralSetting::class,'settingPage'])->name('admin.generalSettingPage');
-        Route::put('general_setting/{id}',[GeneralSetting::class,'getSettings'])->name('admin.getGeneralSetting');
+        Route::get('general_setting', [GeneralSetting::class, 'settingPage'])->name('admin.generalSettingPage');
+        Route::put('general_setting/{id}', [GeneralSetting::class, 'getSettings'])->name('admin.getGeneralSetting');
         /*Resource Controller*/
         Route::resource('department', BackendDepartmentController::class);
         Route::resource('teacher', TeacherController::class);
         Route::resource('subject', SubjectController::class);
-        Route::resource('semester',SemesterController::class);
+        Route::resource('semester', SemesterController::class);
 
 
         /*Change Active Status*/

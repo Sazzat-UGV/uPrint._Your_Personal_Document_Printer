@@ -13,7 +13,7 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
-      <li class="menu-item active">
+      <li class="menu-item">
         <a href="{{ route('student.dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
@@ -23,7 +23,7 @@
       <li class="menu-item ">
         <a href="{{ route('student.GetCoverPageForm') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-file"></i>
-          <div data-i18n="Analytics">Cover Page</div>
+          <div data-i18n="Analytics">Generate Cover Page</div>
         </a>
       </li>
     </ul>
