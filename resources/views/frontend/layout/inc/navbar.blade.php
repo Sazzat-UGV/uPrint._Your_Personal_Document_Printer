@@ -15,8 +15,9 @@
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="{{ asset('uploads/user') }}/{{ Auth::user()->user_image }}" alt class="w-px-40 h-auto rounded-circle" />
+                    <div class="avatar avatar-online d-flex justify-content-end">
+                        <p class="badge bg-primary">50TK</p>
+                        <img src="{{ asset('uploads/user') }}/{{ Auth::user()->user_image }}" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">

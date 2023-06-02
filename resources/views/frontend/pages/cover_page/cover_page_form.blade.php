@@ -20,7 +20,7 @@ Cover Page Genaretor
                   <h5 class="mb-0">Set Cover Page Data</h5>
                 </div>
                 <div class="card-body">
-                  <form action="{{ route('student.PreviewCoverPage') }}" method="POST">
+                  <form action="{{ route('student.PrintCoverPage') }}" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="department">Select Your Department <span
@@ -95,7 +95,7 @@ Cover Page Genaretor
 
                     <div class="row justify-content-end pb-4">
                       <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Generate Cover Page</button>
+                        <button type="submit" class="btn btn-primary">Print Cover Page</button>
                       </div>
                     </div>
 

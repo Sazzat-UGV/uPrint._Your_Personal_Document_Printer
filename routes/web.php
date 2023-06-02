@@ -47,12 +47,17 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
     Route::get('dashboard', [FrontendDashboardController::class, 'dashboard'])->name('student.dashboard');
     Route::get('logout', [AuthLoginController::class, 'logout'])->name('student.logout');
 
+    /*cover page route*/
     Route::get('cover_page_form', [CoverPageContoller::class, 'getCoverPageForm'])->name('student.GetCoverPageForm');
-    Route::post('preview_cover_page', [CoverPageContoller::class, 'PreviewCoverPage'])->name('student.PreviewCoverPage');
+    Route::post('print_cover_page', [CoverPageContoller::class, 'PrintCoverPage'])->name('student.PrintCoverPage');
 
     /*AJAX Call */
     Route::get('subject/ajax/{semester_id}', [CoverPageContoller::class, 'loadSubjectAjax'])->name('loadSubject.ajax');
 });
+
+
+
+Route::get('print_cover_page1', [CoverPageContoller::class, 'FunctionName'])->name('student.PrintCoverPage1');
 
 
 
