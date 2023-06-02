@@ -1,7 +1,7 @@
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
+        <a href="{{ route('student.dashboard') }}" class="app-brand-link">
           <span class="app-brand-text demo menu-text fw-bolder ms-2">uPrint <span class="text-danger">.</span></span>
         </a>
 

@@ -59,6 +59,9 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
     /*user profile modification route*/
     Route::get('change_password',[UserController::class,'changePasswordPage'])->name('student.changePasswordPage');
     Route::post('change_password',[UserController::class,'changePassword'])->name('student.changePassword');
+    Route::get('profile',[UserController::class,'UserProfilePage'])->name('student.profile');
+    Route::post('profile_image/{id}',[UserController::class,'changeImage'])->name('student.profileImageChange');
+    Route::get('profile_edit',[UserController::class,'profile_EditPage'])->name('student.ProfileEditPage');
 });
 
 

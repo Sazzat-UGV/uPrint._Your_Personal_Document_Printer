@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -187,6 +188,7 @@ return [
         // 'Example' => App\Facades\Example::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];
