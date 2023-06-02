@@ -26,12 +26,17 @@ Cover Page Genaretor
                         <label class="col-sm-2 col-form-label" for="department">Select Your Department <span
                                 class="text-danger">*</span></label>
                         <div class="col-sm-10">
-                            <select id="department_id" name="department_id" class="form-select js-example-basic-single" required>
+                            <select id="department_name" name="department_name" class="form-select js-example-basic-single @error('department_name')
+                            is-invalid
+                            @enderror" >
                                 <option value="" selected>Select Department</option>
                                 @foreach ($deparments as $deparment)
                                <option value="{{ $deparment->id }}">{{ $deparment->full_name }}</option>
                                @endforeach
                             </select>
+                            @error('department_name')
+                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                            @enderror
                         </div>
                     </div>
 
@@ -40,22 +45,33 @@ Cover Page Genaretor
                         <label class="col-sm-2 col-form-label" for="semester">Select Semester <span
                                 class="text-danger">*</span></label>
                         <div class="col-sm-10">
-                            <select class="form-select js-example-basic-single" id="semester_id" name="semester_id" required>
+                            <select class="form-select js-example-basic-single @error('semester_name')
+                            is-invalid
+                            @enderror" id="semester_name" name="semester_name" >
                                 <option value="" selected>Select Semester</option>
                                 @foreach ($semesters as $semester)
                                <option value="{{ $semester->id }}">{{ $semester->semester_name }}</option>
                                @endforeach
                             </select>
+                            @error('semester_name')
+                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                            @enderror
                         </div>
                     </div>
+
 
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="subject">Cover Page For <span
                                 class="text-danger">*</span></label>
                         <div class="col-sm-10">
-                            <select class="form-select js-example-basic-single" id="subject_id" name="subject_id">
+                            <select class="form-select js-example-basic-single  @error('subject_name')
+                            is-invalid
+                            @enderror" id="subject_name" name="subject_name">
                                 <option value="">Select Subject</option>
                             </select>
+                            @error('subject_name')
+                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                            @enderror
                         </div>
                     </div>
 
@@ -63,12 +79,17 @@ Cover Page Genaretor
                         <label class="col-sm-2 col-form-label" for="teacher">Submitted To <span
                                 class="text-danger">*</span></label>
                         <div class="col-sm-10">
-                            <select class="form-select js-example-basic-single" id="teacher_id" name="teacher_id" required>
+                            <select class="form-select js-example-basic-single  @error('teacher_name')
+                            is-invalid
+                            @enderror" id="teacher_name" name="teacher_name" >
                                 <option value="" selected>Select Teacher</option>
                                 @foreach ($teachers as $teacher)
                                <option value="{{ $teacher->id }}">{{ $teacher->teacher_name }}</option>
                                @endforeach
                             </select>
+                            @error('teacher_name')
+                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                            @enderror
                         </div>
                     </div>
 
@@ -77,11 +98,16 @@ Cover Page Genaretor
                       <div class="col-sm-10">
                         <input
                           type="text"
-                          class="form-control"
+                          class="form-control @error('assignment_topics')
+                          is-invalid
+                          @enderror"
                           id="basic-default-company"
                           placeholder="enter assignment topics."
                           name="assignment_topics"
                         />
+                        @error('assignment_topics')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                        @enderror
                       </div>
                     </div>
 
@@ -89,7 +115,12 @@ Cover Page Genaretor
                         <label for="submission_date" class="col-md-2 col-form-label">Date of Submission <span
                             class="text-danger">*</span></label>
                         <div class="col-md-10">
-                          <input class="form-control" name="submission_date" type="date" id="submission_date" />
+                          <input class="form-control @error('submission_date')
+                          is-invalid
+                          @enderror" name="submission_date" type="date" id="submission_date" />
+                          @error('submission_date')
+                          <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                          @enderror
                         </div>
                       </div>
 
@@ -114,22 +145,22 @@ Cover Page Genaretor
     $(document).ready(function() {
     $('.js-example-basic-single').select2();
 
-    $('#department_id').on('change', function() {
+    $('#department_name').on('change', function() {
         departmentId = $(this).val();
     });
 
-        $('#semester_id').on('change', function() {
-            var semester_id = $(this).val();
-            if (semester_id) {
+        $('#semester_name').on('change', function() {
+            var semester_name = $(this).val();
+            if (semester_name) {
                 $.ajax({
-                    url: "{{ url('student/subject/ajax') }}/" + semester_id+ "?department_id=" + departmentId,
+                    url: "{{ url('student/subject/ajax') }}/" + semester_name+ "?department_name=" + departmentId,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
                         console.log(data)
-                        var d = $('#subject_id').empty();
+                        var d = $('#subject_name').empty();
                         $.each(data, function(key, value) {
-                            $('#subject_id').append('<option value="' + value.id + '">' + value.subject_name + '</option>');
+                            $('#subject_name').append('<option value="' + value.id + '">' + value.subject_name + '</option>');
                         });
                     },
                 });

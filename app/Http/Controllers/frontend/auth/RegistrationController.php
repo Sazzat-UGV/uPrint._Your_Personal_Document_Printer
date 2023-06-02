@@ -29,8 +29,8 @@ class RegistrationController extends Controller
             'student_id'=>$request->student_Id,
             'phone'=>$request->phone,
             'password'=>Hash::make($request->password),
-            'semester_id'=>$request->semester_id,
-            'department_id'=>$request->department_id,
+            'semester_id'=>$request->semester_name,
+            'department_id'=>$request->department_name,
         ]);
 
         Toastr::success('Your Registration Successfully Completed!');

@@ -56,25 +56,39 @@
                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                 @enderror
               </div>
-              <div class="form-group mt-4">
-                <label for="semester">Select Semester</label>
-                <select class="form-select form-control" style="font-size: 15px" name="semester_id" aria-label="Default select example">
-                    <option selected></option>
-                    @foreach ($semesters as $semester)
-                    <option value="{{ $semester->id }}">{{ $semester->semester_name }}</option>
-                    @endforeach
-                  </select>
-              </div>
-              
+
+
               <div class="form-group mt-4">
                 <label for="department">Select Department</label>
-                <select class="form-select form-control" style="font-size: 15px" name="department_id" aria-label="Default select example">
+                <select class="form-select form-control @error('department_name')
+                is-invalid
+                @enderror" style="font-size: 15px" name="department_name" aria-label="Default select example">
                     <option selected></option>
                     @foreach ($departments as $department)
                     <option value="{{ $department->id }}">{{ $department->name }}</option>
                     @endforeach
                   </select>
+                  @error('department_name')
+                  <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                  @enderror
               </div>
+
+              
+              <div class="form-group mt-4">
+                <label for="semester">Select Semester</label>
+                <select class="form-select form-control @error('semester_name')
+                is-invalid
+                @enderror" style="font-size: 15px" name="semester_name" aria-label="Default select example">
+                    <option selected></option>
+                    @foreach ($semesters as $semester)
+                    <option value="{{ $semester->id }}">{{ $semester->semester_name }}</option>
+                    @endforeach
+                  </select>
+                  @error('semester_name')
+                  <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                  @enderror
+              </div>
+
 
               <div class="form-group">
                 <label for="phone">Phone</label>

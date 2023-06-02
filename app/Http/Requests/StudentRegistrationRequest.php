@@ -26,8 +26,8 @@ class StudentRegistrationRequest extends FormRequest
             'student_Id'=>'required|numeric|digits_between:4,12',
             'phone'=>'required|numeric|digits:11',
             'password'=>'required|string|confirmed|min:6',
-            'semester_id'=>'required|numeric',
-            'department_id'=>'required|numeric',
+            'semester_name'=>'required|numeric',
+            'department_name'=>'required|numeric',
         ];
     }
 }

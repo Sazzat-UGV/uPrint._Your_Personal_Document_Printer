@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CoverPageDataRequest;
-use App\Models\Department;
-use App\Models\Semester;
+use App\Models\User;
 use App\Models\Subject;
 use App\Models\Teacher;
-use App\Models\User;
+use App\Models\Semester;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CoverPageDataRequest;
 use PDF;
 
-class CoverPageContoller extends Controller
+class CoverPageController extends Controller
 {
     public function getCoverPageForm(){
         $deparments=Department::where('is_active',1)->latest('id')->select('id','full_name')->get();
@@ -24,10 +24,10 @@ class CoverPageContoller extends Controller
 
 
 
-    public function loadSubjectAjax($semester_id, Request $request)
+    public function loadSubjectAjax($semester_name, Request $request)
     {
-        $department_id = $request->query('department_id');
-        $subjects = Subject::where('department_id',$department_id)->where('semester_id', $semester_id)->where('is_active',1)->select('id','subject_name')->get();
+        $department_name = $request->query('department_name');
+        $subjects = Subject::where('department_id',$department_name)->where('semester_id', $semester_name)->where('is_active',1)->select('id','subject_name')->get();
         return response()->json($subjects, 200);
     }
 
@@ -35,10 +35,10 @@ class CoverPageContoller extends Controller
 
     public function PrintCoverPage(CoverPageDataRequest $request){
 
-        $teachers=Teacher::with('department')->where('id',$request->teacher_id)->select('id','teacher_name','department_id','teacher_designation')->get();
+        $teachers=Teacher::with('department')->where('id',$request->teacher_name)->select('id','teacher_name','department_id','teacher_designation')->get();
         $assignment_topic=$request->assignment_topics;
-        $subjects=Subject::where('id',$request->subject_id)->select('id','subject_name','subject_code')->get();
-        $student_semester=Semester::where('id',$request->semester_id)->select('id','semester_name')->get();
+        $subjects=Subject::where('id',$request->subject_name)->select('id','subject_name','subject_code')->get();
+        $student_semester=Semester::where('id',$request->semester_name)->select('id','semester_name')->get();
         $submission_date=$request->submission_date;
         $newDate = date("d-m-Y", strtotime($submission_date));
         $student_details=User::with('department')->where('id',Auth::user()->id)->select('id','name','department_id','student_id')->get();
@@ -54,12 +54,4 @@ class CoverPageContoller extends Controller
         return $pdf->stream('info.pdf', array("Attachment" => 0));
 
     }
-
-
-    public function FunctionName()
-    {
-
-    }
-
-
 }

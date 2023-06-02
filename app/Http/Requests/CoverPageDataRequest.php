@@ -22,10 +22,10 @@ class CoverPageDataRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "department_id" =>'required|numeric',
-            "semester_id" =>'required|numeric',
-            "subject_id" =>'required|numeric',
-            "teacher_id" =>'required|numeric',
+            "department_name" =>'required|numeric',
+            "semester_name" =>'required|numeric',
+            "subject_name" =>'required|numeric',
+            "teacher_name" =>'required|numeric',
             "assignment_topics" =>'nullable|string|max:100',
             "submission_date" =>'required|date'
         ];

@@ -13,6 +13,7 @@ use App\Http\Controllers\backend\TeacherController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\frontend\auth\LoginController as AuthLoginController;
 use App\Http\Controllers\frontend\auth\RegistrationController;
+use App\Http\Controllers\frontend\CoverPageController;
 use App\Http\Controllers\frontend\DashboardController as FrontendDashboardController;
 use App\Http\Controllers\frontend\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -48,16 +49,14 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
     Route::get('logout', [AuthLoginController::class, 'logout'])->name('student.logout');
 
     /*cover page route*/
-    Route::get('cover_page_form', [CoverPageContoller::class, 'getCoverPageForm'])->name('student.GetCoverPageForm');
-    Route::post('print_cover_page', [CoverPageContoller::class, 'PrintCoverPage'])->name('student.PrintCoverPage');
+    Route::get('cover_page_form', [CoverPageController::class, 'getCoverPageForm'])->name('student.GetCoverPageForm');
+    Route::post('print_cover_page', [CoverPageController::class, 'PrintCoverPage'])->name('student.PrintCoverPage');
 
     /*AJAX Call */
-    Route::get('subject/ajax/{semester_id}', [CoverPageContoller::class, 'loadSubjectAjax'])->name('loadSubject.ajax');
+    Route::get('subject/ajax/{semester_name}', [CoverPageController::class, 'loadSubjectAjax'])->name('loadSubject.ajax');
 });
 
 
-
-Route::get('print_cover_page1', [CoverPageContoller::class, 'FunctionName'])->name('student.PrintCoverPage1');
 
 
 
