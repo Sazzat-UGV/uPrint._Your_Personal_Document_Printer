@@ -16,6 +16,7 @@ use App\Http\Controllers\frontend\auth\RegistrationController;
 use App\Http\Controllers\frontend\CoverPageController;
 use App\Http\Controllers\frontend\DashboardController as FrontendDashboardController;
 use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,10 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
 
     /*AJAX Call */
     Route::get('subject/ajax/{semester_name}', [CoverPageController::class, 'loadSubjectAjax'])->name('loadSubject.ajax');
+
+    /*user profile modification route*/
+    Route::get('change_password',[UserController::class,'changePasswordPage'])->name('student.changePasswordPage');
+    Route::post('change_password',[UserController::class,'changePassword'])->name('student.changePassword');
 });
 
 
