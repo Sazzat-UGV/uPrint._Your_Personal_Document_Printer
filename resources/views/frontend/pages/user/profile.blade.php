@@ -191,7 +191,7 @@
                         </div><hr>
                         <div class="row pt-1">
                             <div class="col-sm-3">
-                                <a href="{{ route('student.ProfileEditPage') }}" class="btn btn-primary">Edit Info</a>
+                                <a href="{{ route('student.ProfileEditPage') }}" class="btn btn-primary">Edit Profile</a>
                             </div>
                         </div>
 

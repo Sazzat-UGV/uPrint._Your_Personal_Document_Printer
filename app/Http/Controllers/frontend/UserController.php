@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\frontend;
 
+use Image;
 use App\Models\User;
+use App\Models\Semester;
+use App\Models\Department;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StudentProfileImageRequest;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Image;
+use App\Http\Requests\StudentProfileImageRequest;
+use App\Http\Requests\StudentProfileUpdateRequest;
 
 class UserController extends Controller
 {
@@ -82,7 +86,26 @@ class UserController extends Controller
 
     public function profile_EditPage(){
 
-        return response('<h1>ddjfdkjfkdljf</h1>');
+        $user=User::where('id',Auth::user()->id)->select('id','name','email','phone','semester_id','department_id')->get();
+        $semesters=Semester::select('id','semester_name')->get();
+        $departments=Department::where('is_active',1)->latest('id')->select('id','full_name')->get();
+        return view('frontend.pages.user.update_profile',compact('semesters','departments','user'));
+    }
+
+
+    public function profile_edit(StudentProfileUpdateRequest $request){
+        $user=User::where('id',Auth::user()->id)->first();
+        $user->update([
+            "name" => $request->name,
+            "slug" =>Str::slug($request->name),
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "semester_id" => $request->semester_name,
+            "department_id" =>$request->department_name,
+        ]);
+        Toastr::success('Your profile has been Updated');
+        return redirect()->route('student.profile');
+
     }
 }
 
