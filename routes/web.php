@@ -113,5 +113,10 @@ Route::prefix('admin/')->group(function () {
         /*route for users*/
         Route::get('student',[StudentController::class,'index'])->name('admin.studentIndexPage');
         Route::get('student/details/{student_id}',[StudentController::class,'student_details'])->name('admin.studentDetailsPage');
+        Route::get('student/reset_password/{student_id}',[StudentController::class,'passwordResetPage'])->name('admin.studentPasswordResetPage');
+        Route::put('student/reset_password/{student_id}',[StudentController::class,'passwordReset'])->name('admin.studentPasswordReset');
+        Route::delete('student/delete/{student_id}',[StudentController::class,'DeleteStudent'])->name('admin.studentDelete');
+
+        
     });
 });

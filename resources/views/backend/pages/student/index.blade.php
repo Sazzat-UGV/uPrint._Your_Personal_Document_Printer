@@ -51,10 +51,10 @@ Student List
                             <a class="dropdown-item" href="{{ route('admin.studentDetailsPage',['student_id'=>$student->student_id]) }}"
                               ><i class="bx bxs-user-detail me-1"></i> Details</a
                             >
-                            <a class="dropdown-item" href="#"
+                            <a class="dropdown-item" href="{{ route('admin.studentPasswordResetPage',['student_id'=>$student->student_id]) }}"
                               ><i class="bx bx-reset me-1"></i> Reset Password</a
                             >
-                            <form action="#"
+                            <form action="{{ route('admin.studentDelete',['student_id'=>$student->student_id]) }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
