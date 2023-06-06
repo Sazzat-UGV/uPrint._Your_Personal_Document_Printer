@@ -13,7 +13,7 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
-      <li class="menu-item active">
+      <li class="menu-item ">
         <a href="{{ route('admin.dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
@@ -105,15 +105,15 @@
         </ul>
       </li>
 
-
-
-
-
-
-
-
-
-
+      <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Pages</span>
+      </li>
+      <li class="menu-item">
+        <a href="{{ route('admin.studentIndexPage') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bxs-user"></i>
+          <div data-i18n="Tables">Students</div>
+        </a>
+      </li>
 
 
 
@@ -121,7 +121,7 @@
 
 
       <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Pages</span>
+        <span class="menu-header-text">Settings</span>
       </li>
       <li class="menu-item">
         <a href="{{ route('admin.generalSettingPage') }}" class="menu-link">
