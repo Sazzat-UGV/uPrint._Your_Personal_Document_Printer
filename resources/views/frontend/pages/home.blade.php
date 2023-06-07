@@ -177,26 +177,46 @@
             class="col-lg-6 col-md-6 col-sm-12 upload_body-right">
             <div class="contact-main">
               <div class="con-form">
-                <form action="#">
-
+                <form action="{{ route('home.contactus') }}" method="POST">
+                    @csrf
                   <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text"
-                      class="form-control" name=""  aria-describedby="helpId" placeholder="Enter your name">
+                      class="form-control @error('name')
+                      is-invalid
+                      @enderror" name="name"  aria-describedby="helpId" placeholder="Enter your name">
+                      @error('name')
+                          <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                      @enderror
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text"
-                      class="form-control" name=""  aria-describedby="helpId" placeholder="Enter your email">
-                  </div>
+                    <input type="email"
+                      class="form-control @error('email')
+is-invalid
+                      @enderror" name="email"  aria-describedby="helpId" placeholder="Enter your email">
+                      @error('email')
+                      <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                  @enderror
+                    </div>
                   <div class="form-group">
                     <label for="subject">Subject</label>
                     <input type="text"
-                      class="form-control" name=""  aria-describedby="helpId" placeholder=Subject>
-                  </div>
+                      class="form-control @error('subject')
+                      is-invalid
+                                            @enderror" name="subject"  aria-describedby="helpId" placeholder=Subject>
+                                            @error('subject')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                        </div>
                   <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea name="" id="" cols="30" rows="4" placeholder="Message" class="form-control"></textarea>
+                    <textarea name="message" id="" cols="30" rows="4" placeholder="Message" class="form-control @error('message')
+                    is-invalid
+                                          @enderror"></textarea>
+                                          @error('message')
+                                          <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                      @enderror
                   </div>
                   <div class="text-center">
                     <button class="btn btn-danger mt-2 btn">Submit</button>

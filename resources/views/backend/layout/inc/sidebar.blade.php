@@ -114,6 +114,12 @@
           <div data-i18n="Tables">Students</div>
         </a>
       </li>
+      <li class="menu-item">
+        <a href="{{ route('admin.contactusIndex') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-message-rounded-detail"></i>
+          <div data-i18n="Tables">Contacts</div>
+        </a>
+      </li>
 
 
 

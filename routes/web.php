@@ -3,6 +3,7 @@
 use App\Http\Controllers\backend\adminController;
 use App\Http\Controllers\backend\auth\loginController;
 use App\Http\Controllers\backend\changeStatusController;
+use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\backend\CoverPageContoller;
 use App\Http\Controllers\backend\dashboardController;
 use App\Http\Controllers\backend\DepartmentController as BackendDepartmentController;
@@ -36,6 +37,7 @@ Route::prefix('')->group(function () {
 
     /*Home page*/
     Route::get('/', [HomeController::class, 'homePage'])->name('HomePage');
+    Route::post('contact',[ContactUsController::class,'Insert'])->name('home.contactus');
 
     /*student login route*/
     Route::get('login', [AuthLoginController::class, 'studentloginPage'])->name('student.LoginPage');
@@ -117,6 +119,8 @@ Route::prefix('admin/')->group(function () {
         Route::put('student/reset_password/{student_id}',[StudentController::class,'passwordReset'])->name('admin.studentPasswordReset');
         Route::delete('student/delete/{student_id}',[StudentController::class,'DeleteStudent'])->name('admin.studentDelete');
 
-        
+        /*route for contacts*/
+        Route::get('contact_list',[ContactUsController::class,'Index'])->name('admin.contactusIndex');
+        Route::delete('contact_list/delete/{id}',[ContactUsController::class,'Delete'])->name('admin.contactusDelete');
     });
 });
