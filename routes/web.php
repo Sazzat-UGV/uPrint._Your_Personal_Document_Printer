@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\AccountController;
 use App\Http\Controllers\backend\adminController;
 use App\Http\Controllers\backend\auth\loginController;
 use App\Http\Controllers\backend\changeStatusController;
@@ -122,5 +123,14 @@ Route::prefix('admin/')->group(function () {
         /*route for contacts*/
         Route::get('contact_list',[ContactUsController::class,'Index'])->name('admin.contactusIndex');
         Route::delete('contact_list/delete/{id}',[ContactUsController::class,'Delete'])->name('admin.contactusDelete');
+
+
+        /*route for accounts*/
+        Route::get('account',[AccountController::class,'IndexPage'])->name('admin.accountIndexPage');
+        Route::get('account/add_balance/{student_id}',[AccountController::class,'AddBalancePage'])->name('admin.AddBalancePage');
+        Route::put('account/add_balance/{student_id}',[AccountController::class,'AddBalance'])->name('admin.AddBalance');
+        Route::get('account/remove_balance/{student_id}',[AccountController::class,'RemoveBalancePage'])->name('admin.RemoveBalancePage');
+        Route::put('account/remove_balance/{student_id}',[AccountController::class,'RemoveBalance'])->name('admin.RemoveBalance');
+
     });
 });

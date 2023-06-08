@@ -108,6 +108,15 @@
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Pages</span>
       </li>
+
+      <!-- Account -->
+      <li class="menu-item">
+        <a href="{{ route('admin.accountIndexPage') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-wallet"></i>
+          <div data-i18n="Tables">Accounts</div>
+        </a>
+      </li>
+
       <li class="menu-item">
         <a href="{{ route('admin.studentIndexPage') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bxs-user"></i>
