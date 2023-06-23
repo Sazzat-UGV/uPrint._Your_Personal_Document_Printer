@@ -102,6 +102,7 @@ Route::prefix('admin/')->group(function () {
         /*general Setting route*/
         Route::get('general_setting', [GeneralSetting::class, 'settingPage'])->name('admin.generalSettingPage');
         Route::put('general_setting/{id}', [GeneralSetting::class, 'getSettings'])->name('admin.getGeneralSetting');
+
         /*Resource Controller*/
         Route::resource('department', BackendDepartmentController::class);
         Route::resource('teacher', TeacherController::class);
