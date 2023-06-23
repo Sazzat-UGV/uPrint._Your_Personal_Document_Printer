@@ -77,10 +77,6 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
 
 
 
-
-
-
-
 /*admin auth route*/
 Route::prefix('admin/')->group(function () {
     /*admin login route*/
@@ -110,10 +106,6 @@ Route::prefix('admin/')->group(function () {
         Route::resource('subject', SubjectController::class);
         Route::resource('semester', SemesterController::class);
 
-        /*Change Active Status*/
-        Route::get('active_department/{slug}/{status}', [changeStatusController::class, 'activeDepartment'])->name('admin.departmentActive');
-        Route::get('active_teacher/{slug}/{status}', [changeStatusController::class, 'activeTeacher'])->name('admin.teacherActive');
-        Route::get('active_subject/{slug}/{status}', [changeStatusController::class, 'activeSubject'])->name('admin.subjectActive');
 
         /*route for users*/
         Route::get('student',[StudentController::class,'index'])->name('admin.studentIndexPage');
@@ -142,6 +134,10 @@ Route::prefix('admin/')->group(function () {
 
 
         /*Ajax Call*/
+        Route::get('check/department/is_active/{department_id}', [changeStatusController::class, 'activeDepartment'])->name('admin.departmentActive');
+        Route::get('/check/teacher/is_active/{teacher_id}', [changeStatusController::class, 'activeTeacher'])->name('admin.teacherActive');
+        Route::get('check/subject/is_active/{subject_id}', [changeStatusController::class, 'activeSubject'])->name('admin.subjectActive');
         Route::get('check/price/show_on_hompage/{page_id}',[PagePriceController::class,'ActiveOrInactive'])->name('admin.activePage');
+
     });
 });

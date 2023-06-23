@@ -48,15 +48,12 @@
                             <td>{{ Str::limit($subject->subject_name, 25, '...') }}</td>
                             <td>{{ $subject->subject_code }}</td>
                             <td>
-                                @if ($subject->is_active == 1)
-                                    <a class="btn"
-                                        href="{{ route('admin.subjectActive', ['slug' => $subject->slug, 'status' => '1']) }}"><span
-                                            class="badge bg-success">Active</span></a>
-                                @elseif ($subject->is_active == 0)
-                                    <a class="btn"
-                                        href="{{ route('admin.subjectActive', ['slug' => $subject->slug, 'status' => '0']) }}"><span
-                                            class="badge bg-danger">Deactive</span></a>
-                                @endif
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input toggle-class" type="checkbox" role="switch"
+                                        data-id="{{ $subject->id }}" id="subject-{{ $subject->id }}"
+                                        {{ $subject->is_active ? 'checked' : '' }}>
+
+                                </div>
                             </td>
                             <td>
                                 <div class="dropdown">
@@ -93,6 +90,32 @@
 
     <script>
         $(document).ready(function() {
+
+            $('.toggle-class').change(function() {
+                var is_active = $(this).prop('checked') == true ? 1 : 0;
+                var item_id = $(this).data('id');
+                //console.log(is_active, item_id);//for debug purpos
+
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/admin/check/subject/is_active/' + item_id,
+                    success: function(response) {
+                        console.log(response);
+                        Swal.fire(
+                            'Status Updated!',
+                            'Click ok button!',
+                            'success'
+                        )
+                    },
+                    errro: function(err) {
+                        if (err) {
+                            console.log(err);
+                        }
+                    }
+                });
+            });
+
             $('#example').DataTable({
                 pagingType: 'first_last_numbers',
             });

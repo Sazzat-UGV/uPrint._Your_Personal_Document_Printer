@@ -42,7 +42,7 @@ class StudentController extends Controller
             'password'=>Hash::make($request->reset_password),
         ]);
 
-        Toastr::success('Password Updated Successfully!');
+        Toastr::success('Password Reset Successfully!');
         return redirect()->route('admin.studentIndexPage');
     }
 

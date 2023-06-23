@@ -17,7 +17,7 @@ class SemesterController extends Controller
      */
     public function index()
     {
-        $semesters=Semester::select('id','semester_name','slug','created_at')->latest('id')->get();
+        $semesters=Semester::select('id','semester_name','slug','created_at')->get();
         return view('backend.pages.semester.index',compact('semesters'));
     }
 
