@@ -129,6 +129,12 @@
           <div data-i18n="Tables">Contacts</div>
         </a>
       </li>
+      <li class="menu-item">
+        <a href="{{ route('admin.PagePriceIndex') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-dollar"></i>
+          <div data-i18n="Tables">Pricing</div>
+        </a>
+      </li>
 
 
 

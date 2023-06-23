@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\CoverPageContoller;
 use App\Http\Controllers\backend\dashboardController;
 use App\Http\Controllers\backend\DepartmentController as BackendDepartmentController;
 use App\Http\Controllers\backend\GeneralSetting;
+use App\Http\Controllers\backend\PagePriceController;
 use App\Http\Controllers\backend\SemesterController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
@@ -133,5 +134,14 @@ Route::prefix('admin/')->group(function () {
         Route::get('account/remove_balance/{student_id}',[AccountController::class,'RemoveBalancePage'])->name('admin.RemoveBalancePage');
         Route::put('account/remove_balance/{student_id}',[AccountController::class,'RemoveBalance'])->name('admin.RemoveBalance');
 
+
+        /*route for Page Pricing*/
+        Route::get('/page_price',[PagePriceController::class,'IndexPage'])->name('admin.PagePriceIndex');
+        Route::get('/page_price/edit/{page_id}',[PagePriceController::class,'EditPage'])->name('admin.PagePriceEdit');
+        Route::put('/page_price/update/{page_id}',[PagePriceController::class,'UpdatePrice'])->name('admin.PagePriceUpdate');
+
+
+        /*Ajax Call*/
+        Route::get('check/price/show_on_hompage/{page_id}',[PagePriceController::class,'ActiveOrInactive'])->name('admin.activePage');
     });
 });

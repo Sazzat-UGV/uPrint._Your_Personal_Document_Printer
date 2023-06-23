@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             SemesterSeeder::class,
             SubjectSeeder::class,
             GeneralSettingSeeder::class,
+            PagePriceSeeder::class,
         ]);
     }
 }
