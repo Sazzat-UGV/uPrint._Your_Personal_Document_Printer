@@ -18,7 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers=Teacher::with('department')->latest('id')->select('id','department_id','teacher_name','slug','teacher_designation','is_active')->get();
+        $teachers=Teacher::with('department:id,name,is_active')->latest('id')->select('id','department_id','teacher_name','slug','teacher_designation','is_active')->get();
         return view('backend.pages.teacher.index',compact('teachers'));
     }
 

@@ -38,7 +38,7 @@ Student List
                 <th scope="row">{{ $index+1 }}</th>
                 <td>{{ $student->created_at->format('d M Y') }}</td>
                 <td><img src="{{ asset('uploads/user') }}/{{ $student->user_image }}"
-                    alt="" class="img-fluid rounded w-50 "></td>
+                    alt="" class="img-fluid rounded w-25 "></td>
                 <td>{{ Str::limit($student->name, 25, '...') }}</td>
                 <td>{{ $student->student_id }}</td>
                 <td>{{ Str::limit($student->department->name, 12, '...') }}</td>

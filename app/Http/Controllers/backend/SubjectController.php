@@ -19,7 +19,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects=Subject::with('semester','department')->latest('id')->select('id','semester_id','department_id', 'slug','subject_name','subject_code','updated_at','is_active')->get();
+        $subjects=Subject::with('semester:id,semester_name','department:id,name,is_active')->latest('id')->select('id','semester_id','department_id', 'slug','subject_name','subject_code','updated_at','is_active')->get();
+        // return $subjects;
         return view('backend.pages.subject.index',compact('subjects'));
     }
 

@@ -12,7 +12,8 @@ class AccountController extends Controller
 
     public function IndexPage()
     {
-        $students=User::with('department')->where('role_id',2)->where('is_system_admin',0)->latest('updated_at')->select('id','updated_at','name','student_id','balance','department_id')->get();
+        $students=User::with('department:id,name')->where('role_id',2)->where('is_system_admin',0)->latest('updated_at')->select('id','updated_at','name','student_id','balance','department_id')->get();
+        
         return view('backend.pages.account.index',compact('students'));
     }
 

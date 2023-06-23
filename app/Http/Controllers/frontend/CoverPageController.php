@@ -35,14 +35,13 @@ class CoverPageController extends Controller
 
     public function PrintCoverPage(CoverPageDataRequest $request){
 
-        $teachers=Teacher::with('department')->where('id',$request->teacher_name)->select('id','teacher_name','department_id','teacher_designation')->get();
+        $teachers=Teacher::with('department:id,full_name')->where('id',$request->teacher_name)->select('id','teacher_name','department_id','teacher_designation')->get();
         $assignment_topic=$request->assignment_topics;
         $subjects=Subject::where('id',$request->subject_name)->select('id','subject_name','subject_code')->get();
         $student_semester=Semester::where('id',$request->semester_name)->select('id','semester_name')->get();
         $submission_date=$request->submission_date;
         $newDate = date("d-m-Y", strtotime($submission_date));
-        $student_details=User::with('department')->where('id',Auth::user()->id)->select('id','name','department_id','student_id')->get();
-
+        $student_details=User::with('department:id,full_name')->where('id',Auth::user()->id)->select('id','name','department_id','student_id')->get();
         $pdf = PDF::loadView('frontend.pages.cover_page.cover_page_view',compact(
             'teachers',
             'student_details',

@@ -12,15 +12,14 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students=User::with('department')->where('role_id',2)->where('is_system_admin',0)->select('id','name','student_id','user_image','created_at','department_id')->get();
-
+        $students=User::with('department:id,name')->where('role_id',2)->where('is_system_admin',0)->select('id','name','student_id','user_image','created_at','department_id')->get();
         return view('backend.pages.student.index',compact('students'));
     }
 
 
 
     public function student_details($student_id){
-        $students=User::where('student_id',$student_id)->with('department','semester')->get();
+        $students=User::where('student_id',$student_id)->with('department:id,full_name','semester:id,semester_name')->select('id','role_id','name','email','phone','balance','student_id','user_image','semester_id','department_id')->get();
         return view('backend.pages.student.full_profile',compact('students'));
     }
 
