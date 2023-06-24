@@ -30,7 +30,7 @@
       </li>
 
       <li class="menu-item ">
-        <a href="#" class="menu-link"><i class="menu-icon tf-icons bx bx-paperclip"></i><div data-i18n="Analytics">Print Documents</div>
+        <a href="{{ route('student.DocumentPage') }}" class="menu-link"><i class="menu-icon tf-icons bx bx-paperclip"></i><div data-i18n="Analytics">Print Documents</div>
         </a>
       </li>
 
