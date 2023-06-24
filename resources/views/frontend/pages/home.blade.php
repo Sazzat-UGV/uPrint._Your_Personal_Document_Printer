@@ -18,6 +18,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/backend') }}/img/favicon/favicon.ico" />
     <link rel="stylesheet" href="{{ asset('assets/frontend/home') }}/css/style.css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
     <title>uPrint</title>
@@ -53,12 +54,29 @@
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
 
+                    @auth
                     <li class="nav-item">
+                        <div class="dropdown">
+                            <a class=" dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                My Account
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{{ route('student.dashboard') }}"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                              <li><a class="dropdown-item" href="{{ route('student.logout') }}"><i class="fa-solid fa-power-off"></i> Logout</a></li>
+                            </ul>
+                          </div>
+                    </li>
+
+                    @endauth
+
+                    @guest
+                    <li class=" button_item">
                         <a class="nav-link" href="{{ route('student.LoginPage') }}">Login</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="button_item">
                         <a class="nav-link" href="{{ route('student.RegistrationPage') }}">Register</a>
                     </li>
+                    @endguest
                 </ul>
             </div>
         </div>

@@ -10,18 +10,18 @@
     font-size: 20px;
     font-weight: 400;
 }
-  
-  .nav-item:nth-last-child(-n+2) .nav-link {
+
+  .button_item  .nav-link {
     background-color: #DEE1E3;
     color: #2b2a2a;
     border-radius: 50px;
-    padding: 8px 20px;
+    padding: 8px 20px !important;
     margin-left: 10px;
 
   }
-  
-  .nav-item:nth-last-child(-n+2) .nav-link:hover {
-    background-color: #DEE1E3;
+
+  .button_item .nav-link:hover {
+    background-color: #bcc1c5;
   }
 
 
@@ -35,14 +35,14 @@
   .upload_body-right h1{
     font-weight: 800;
     font-size: 70px;
-    font-family: 'Poppins', sans-serif; 
-    margin-top: 120px; 
+    font-family: 'Poppins', sans-serif;
+    margin-top: 120px;
   }
 
   .about h1{
     font-size: 50px;
     font-weight: 600;
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     color:#6b6b6b;
   }
 
@@ -54,7 +54,7 @@
   #pricing h1{
     font-size: 50px;
     font-weight: 600;
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     color:#575757;
   }
   #pricing{
@@ -99,7 +99,7 @@
     margin-bottom: 5px;
   }
   .price-head span{}
-  
+
   .single-pricing ul{list-style:none;margin-top: 30px;}
   .single-pricing ul li {
     line-height: 36px;
@@ -116,7 +116,7 @@
     margin-right: 6px;
   }
   .pricing-price{}
-  
+
   .price_btn {
     background: #6a5faa;
     padding: 10px 30px;
@@ -132,10 +132,10 @@
     color: white;
   }
   a{
-  text-decoration:none; 
-  
+  text-decoration:none;
+
   }
-  
+
   .section-title {
       margin-bottom: 60px;
   }
@@ -147,7 +147,7 @@
   #policy h1{
     font-size: 50px;
     font-weight: 600;
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     color:#6b6b6b;
   }
 
@@ -161,7 +161,7 @@
   .contact h1{
     font-size: 50px;
     font-weight: 600;
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     color:#575757;
   }
 
