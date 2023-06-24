@@ -72,7 +72,7 @@
 @endpush
 
 @section('content')
-<marquee behavior="" direction="">NOTICE...>**** Do not forget to Keep your account logout ****. If you face any problem Please Contact to CSE Deptartment. </marquee>
+<marquee behavior="" direction="">NOTICE...>**** Do not forget to Keep your account logout ****. If you face any problem Please Contact to Deptartment of CSE. </marquee>
     <div class="container-xl px-4 mt-2">
         <div class="row">
             <div class="col-xl-4">

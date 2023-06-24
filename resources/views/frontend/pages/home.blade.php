@@ -70,7 +70,7 @@
                     @endauth
 
                     @guest
-                    <li class=" button_item">
+                    <li class=" button_item mb-2">
                         <a class="nav-link" href="{{ route('student.LoginPage') }}">Login</a>
                     </li>
                     <li class="button_item">

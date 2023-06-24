@@ -25,7 +25,6 @@ class PagePriceController extends Controller
     public function UpdatePrice(PaperPageUpdateRequest $request,$page_id){
         $page=PagePrice::find($page_id);
         $page->update([
-            'paper_type'=>$request->paper_type,
             'paper_price'=>$request->page_price,
         ]);
 

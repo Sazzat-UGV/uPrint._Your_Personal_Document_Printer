@@ -28,19 +28,6 @@
                     @method('PUT')
 
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="page_type">Paper Type <span
-                            class="text-danger">*</span></label>
-                        <div class="col-sm-10">
-                            <input type="text"  id="page_type" value="{{ $page->paper_type }}" name="paper_type" placeholder="enter paper type" class="form-control @error('paper_type')
-                            is-invalid
-                            @enderror" />
-                            @error('paper_type')
-                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="page_price">Paper Price <span
                             class="text-danger">*</span></label>
                         <div class="col-sm-10">

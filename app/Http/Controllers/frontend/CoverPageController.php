@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\frontend;
 
+use PDF;
 use App\Models\User;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Semester;
+use App\Models\PagePrice;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
+use App\Models\TotalPrintedCoverPage;
 use App\Http\Requests\CoverPageDataRequest;
-use PDF;
 
 class CoverPageController extends Controller
 {
@@ -34,7 +37,7 @@ class CoverPageController extends Controller
 
 
     public function PrintCoverPage(CoverPageDataRequest $request){
-
+        $user=Auth::user()->id;
         $teachers=Teacher::with('department:id,full_name')->where('id',$request->teacher_name)->select('id','teacher_name','department_id','teacher_designation')->get();
         $assignment_topic=$request->assignment_topics;
         $subjects=Subject::where('id',$request->subject_name)->select('id','subject_name','subject_code')->get();
@@ -49,8 +52,27 @@ class CoverPageController extends Controller
             'subjects',
             'student_semester',
             'newDate'
-            ))->setPaper('a4', 'portrait');
-        return $pdf->stream('info.pdf', array("Attachment" => 0));
+            ))->setPaper('a4','portrait')->save(public_path('pdf/'.$user.'.pdf'));
+            // return $pdf->stream('info.pdf', array("Attachment" => 0));
+            if($pdf){
+                $page=PagePrice::where('paper_type','Color')->first();
+                $user=User::whereId(Auth::user()->id)->first();
+                $page_price=$page->paper_price;
+                $accout_balance=$user->balance;
+                if($page_price<=$accout_balance){
+                    $new_balance = $accout_balance - $page_price;
+                    $user->update([
+                        'balance' => $new_balance,
+                    ]);
 
+                    TotalPrintedCoverPage::create([
+                        'user_id'=>Auth::user()->id,
+                        'printed_balance'=>$page_price,
+                    ]);
+                }else{
+                    Toastr::error('Please Recharge your account...','Insufficient Balance!');
+                    return redirect()->route('student.GetCoverPageForm');
+                }
+            }
     }
 }

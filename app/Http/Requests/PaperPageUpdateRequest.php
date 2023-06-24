@@ -22,7 +22,6 @@ class PaperPageUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'paper_type'=>'required|string|max:200',
             'page_price'=>'required|numeric'
         ];
     }
