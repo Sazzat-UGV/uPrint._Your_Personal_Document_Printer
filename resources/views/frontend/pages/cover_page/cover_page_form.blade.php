@@ -175,8 +175,9 @@ Cover Page Genaretor
 
     function printPDF(event) {
     event.preventDefault();
-    var fileName = '2.pdf'; // Update with the actual name of your PDF file
-    var filePath = '{{ asset('pdf/2.pdf') }}'; // Replace with the actual relative URL to your PDF file
+    var userId = {{ auth()->user()->id }};
+var fileName = userId + '.pdf';
+var filePath = '/pdf/' + fileName;
 
     // Create an iframe element
     var iframe = document.createElement('iframe');
