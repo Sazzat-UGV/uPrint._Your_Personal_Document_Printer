@@ -15,13 +15,25 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TotalPrintedCoverPage;
 use App\Http\Requests\CoverPageDataRequest;
+use Illuminate\Support\Facades\Session;
 
 class CoverPageController extends Controller
 {
+
+
     public function getCoverPageForm(){
         $deparments=Department::where('is_active',1)->latest('id')->select('id','full_name')->get();
         $semesters=Semester::select('id','semester_name')->get();
         $teachers=Teacher::where('is_active',1)->select('id','teacher_name')->get();
+
+        $fileName = Auth::user()->id.'.pdf';
+        // Update with the actual name of your PDF file
+       $filePath = public_path('pdf/' . $fileName);
+        if (file_exists($filePath)) {
+            Session::put('message', 'exists');
+        }else{
+            Session::forget('message');
+        }
         return view('frontend.pages.cover_page.cover_page_form',compact('deparments','semesters','teachers'));
     }
 
@@ -58,9 +70,9 @@ class CoverPageController extends Controller
                 $page=PagePrice::where('paper_type','Color')->first();
                 $user=User::whereId(Auth::user()->id)->first();
                 $page_price=$page->paper_price;
-                $accout_balance=$user->balance;
-                if($page_price<=$accout_balance){
-                    $new_balance = $accout_balance - $page_price;
+                $account_balance=$user->balance;
+                if($page_price<=$account_balance){
+                    $new_balance = $account_balance - $page_price;
                     $user->update([
                         'balance' => $new_balance,
                     ]);
@@ -69,6 +81,15 @@ class CoverPageController extends Controller
                         'user_id'=>Auth::user()->id,
                         'printed_balance'=>$page_price,
                     ]);
+
+                    $fileName = Auth::user()->id.'.pdf';
+                     // Update with the actual name of your PDF file
+                    $filePath = public_path('pdf/' . $fileName);
+                    if (file_exists($filePath)) {
+                        $request->session()->put('message', 'exists');
+                    }
+                    return redirect()->route('student.GetCoverPageForm');
+
                 }else{
                     Toastr::error('Please Recharge your account...','Insufficient Balance!');
                     return redirect()->route('student.GetCoverPageForm');

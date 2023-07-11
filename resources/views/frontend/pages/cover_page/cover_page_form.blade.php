@@ -20,7 +20,7 @@ Cover Page Genaretor
                   <h5 class="mb-0">Set Cover Page Data</h5>
                 </div>
                 <div class="card-body">
-                  <form action="{{ route('student.PrintCoverPage') }}" method="POST">
+                  <form action="{{ route('student.PrintCoverPage') }}" method="POST" id="pdfForm">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="department">Select Your Department <span
@@ -126,15 +126,20 @@ Cover Page Genaretor
 
                     <div class="row justify-content-end pb-4">
                       <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Print Cover Page</button>
-                      </div>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Generate</button>
 
-                  </form>
+                        @if(session('message'))
+                        <button  onclick="printPDF(event)" class="btn btn-success">Print PDF</button>
+                        @endif
+                    </div>
+                </div>
+            </form>
+
                 </div>
               </div>
             </div>
     </div>
+
 
 @endsection
 
@@ -143,17 +148,17 @@ Cover Page Genaretor
 <script>
     var departmentId;
     $(document).ready(function() {
-    $('.js-example-basic-single').select2();
+        $('.js-example-basic-single').select2();
 
-    $('#department_name').on('change', function() {
-        departmentId = $(this).val();
-    });
+        $('#department_name').on('change', function() {
+            departmentId = $(this).val();
+        });
 
         $('#semester_name').on('change', function() {
             var semester_name = $(this).val();
             if (semester_name) {
                 $.ajax({
-                    url: "{{ url('student/subject/ajax') }}/" + semester_name+ "?department_name=" + departmentId,
+                    url: "{{ url('student/subject/ajax') }}/" + semester_name + "?department_name=" + departmentId,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
@@ -168,6 +173,29 @@ Cover Page Genaretor
         });
     });
 
-</script>
+    function printPDF(event) {
+    event.preventDefault();
+    var fileName = '2.pdf'; // Update with the actual name of your PDF file
+    var filePath = '{{ asset('pdf/2.pdf') }}'; // Replace with the actual relative URL to your PDF file
 
+    // Open the PDF file in a new window
+    var newWindow = window.open(filePath);
+
+    // Wait for the new window to load
+    newWindow.onload = function() {
+        // Call the print method on the new window
+        newWindow.print();
+
+        // Listen for the 'afterprint' event on the new window
+        newWindow.addEventListener('afterprint', function() {
+            // Close the new window
+            newWindow.close();
+        });
+    };
+}
+
+
+
+
+</script>
 @endpush
