@@ -118,7 +118,7 @@ Print Documents
                 </div>
                 <div class="upload-area-text p-3">Click here to choose file</div>
               </div>
-              <input type="file" id="pdfFile" name="pdfFile" accept=".pdf" style="display: none;">
+              <input type="file" id="pdfFile" name="pdf" accept=".pdf" style="display: none;">
             </div>
             <div class="form-group">
               <button type="submit" id="uploadButton" class="upload-button">Upload</button>
