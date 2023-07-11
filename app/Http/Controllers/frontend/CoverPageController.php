@@ -88,6 +88,7 @@ class CoverPageController extends Controller
                     if (file_exists($filePath)) {
                         $request->session()->put('message', 'exists');
                     }
+                    Toastr::success('Coverpage Generated !!');
                     return redirect()->route('student.GetCoverPageForm');
 
                 }else{

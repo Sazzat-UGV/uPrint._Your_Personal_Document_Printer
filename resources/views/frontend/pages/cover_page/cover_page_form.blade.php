@@ -178,21 +178,33 @@ Cover Page Genaretor
     var fileName = '2.pdf'; // Update with the actual name of your PDF file
     var filePath = '{{ asset('pdf/2.pdf') }}'; // Replace with the actual relative URL to your PDF file
 
-    // Open the PDF file in a new window
-    var newWindow = window.open(filePath);
+    // Create an iframe element
+    var iframe = document.createElement('iframe');
+    iframe.src = filePath;
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.display = 'none'; // Hide the iframe
 
-    // Wait for the new window to load
-    newWindow.onload = function() {
-        // Call the print method on the new window
-        newWindow.print();
+    // Append the iframe to the body
+    document.body.appendChild(iframe);
 
-        // Listen for the 'afterprint' event on the new window
-        newWindow.addEventListener('afterprint', function() {
-            // Close the new window
-            newWindow.close();
-        });
+    // Wait for the PDF to load in the iframe
+    iframe.onload = function() {
+      // Call the print method on the iframe
+      iframe.contentWindow.print();
+
+      // Reload the page with a delay after printing
+      var delayInMilliseconds = 3000; // 3 seconds
+      setTimeout(function() {
+        // location.reload();
+      }, delayInMilliseconds);
     };
-}
+  }
+
+  function cancelPrint() {
+    // Reload the current page
+    window.location.reload();
+  }
 
 
 
