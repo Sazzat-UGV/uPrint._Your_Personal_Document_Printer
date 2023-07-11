@@ -25,12 +25,12 @@
       <li class="menu-item ">
         <a href="{{ route('student.GetCoverPageForm') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-file"></i>
-          <div data-i18n="Analytics">Generate Cover Page</div>
+          <div data-i18n="Analytics">Generate Cover Page <span class="text-danger text-bold">***</span></div>
         </a>
       </li>
 
       <li class="menu-item ">
-        <a href="{{ route('student.DocumentPage') }}" class="menu-link"><i class="menu-icon tf-icons bx bx-paperclip"></i><div data-i18n="Analytics">Print Documents</div>
+        <a href="{{ route('student.DocumentPage') }}" class="menu-link"><i class="menu-icon tf-icons bx bx-paperclip"></i><div data-i18n="Analytics">Print Documents <span class="text-danger text-bold">***</span></div>
         </a>
       </li>
 

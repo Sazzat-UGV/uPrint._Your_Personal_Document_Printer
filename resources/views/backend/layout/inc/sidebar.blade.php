@@ -145,6 +145,12 @@
         <span class="menu-header-text">Settings</span>
       </li>
       <li class="menu-item">
+        <a href="{{ route('backup.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-data"></i>
+          <div data-i18n="Tables">Backup Management</div>
+        </a>
+      </li>
+      <li class="menu-item">
         <a href="{{ route('admin.generalSettingPage') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-cog"></i>
           <div data-i18n="Tables">General Settings</div>

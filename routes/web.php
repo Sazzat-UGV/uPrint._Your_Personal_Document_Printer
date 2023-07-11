@@ -3,6 +3,7 @@
 use App\Http\Controllers\backend\AccountController;
 use App\Http\Controllers\backend\adminController;
 use App\Http\Controllers\backend\auth\loginController;
+use App\Http\Controllers\backend\BackupController;
 use App\Http\Controllers\backend\changeStatusController;
 use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\backend\CoverPageContoller;
@@ -110,6 +111,9 @@ Route::prefix('admin/')->group(function () {
         Route::resource('teacher', TeacherController::class);
         Route::resource('subject', SubjectController::class);
         Route::resource('semester', SemesterController::class);
+        Route::resource('backup', BackupController::class)->only(['index','store','destroy']);
+
+        Route::get('/backup/download/{file_name}',[BackUpcontroller::class,'download'])->name('admin.backupDownload');
 
 
         /*route for users*/

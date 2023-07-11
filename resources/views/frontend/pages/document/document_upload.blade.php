@@ -111,7 +111,7 @@ Print Documents
           <form action="{{ route('student.GetDocument') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-              <label for="pdfFile">Select your PDF file:</label>
+              <label for="pdfFile">Upload your PDF file:</label>
               <div class="upload-area p-5" id="uploadArea">
                 <div class="upload-icon">
                   <i class="fas fa-file-pdf upload-pdf-icon"></i>
