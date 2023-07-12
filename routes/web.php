@@ -59,6 +59,7 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
     /*cover page route*/
     Route::get('cover_page_form', [CoverPageController::class, 'getCoverPageForm'])->name('student.GetCoverPageForm');
     Route::post('print_cover_page', [CoverPageController::class, 'PrintCoverPage'])->name('student.PrintCoverPage');
+    Route::get('print_status', [CoverPageController::class, 'CoverpageStatus'])->name('student.CoverpageStatus');
 
     /*AJAX Call */
     Route::get('subject/ajax/{semester_name}', [CoverPageController::class, 'loadSubjectAjax'])->name('loadSubject.ajax');

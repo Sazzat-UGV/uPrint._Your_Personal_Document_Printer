@@ -128,9 +128,6 @@ Cover Page Genaretor
                       <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Generate</button>
 
-                        @if(session('message'))
-                        <button  onclick="printPDF(event)" class="btn btn-success">Print PDF</button>
-                        @endif
                     </div>
                 </div>
             </form>
@@ -172,41 +169,6 @@ Cover Page Genaretor
             }
         });
     });
-
-    function printPDF(event) {
-    event.preventDefault();
-    var userId = {{ auth()->user()->id }};
-var fileName = userId + '.pdf';
-var filePath = '/pdf/' + fileName;
-
-    // Create an iframe element
-    var iframe = document.createElement('iframe');
-    iframe.src = filePath;
-    iframe.style.width = '0';
-    iframe.style.height = '0';
-    iframe.style.display = 'none'; // Hide the iframe
-
-    // Append the iframe to the body
-    document.body.appendChild(iframe);
-
-    // Wait for the PDF to load in the iframe
-    iframe.onload = function() {
-      // Call the print method on the iframe
-      iframe.contentWindow.print();
-
-      // Reload the page with a delay after printing
-      var delayInMilliseconds = 3000; // 3 seconds
-      setTimeout(function() {
-        // location.reload();
-      }, delayInMilliseconds);
-    };
-  }
-
-  function cancelPrint() {
-    // Reload the current page
-    window.location.reload();
-  }
-
 
 
 

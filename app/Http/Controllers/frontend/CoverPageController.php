@@ -30,8 +30,7 @@ class CoverPageController extends Controller
         // Update with the actual name of your PDF file
        $filePath = public_path('pdf/' . $fileName);
         if (file_exists($filePath)) {
-            Session::put('message', 'exists');
-        }else{
+            unlink($filePath);
             Session::forget('message');
         }
         return view('frontend.pages.cover_page.cover_page_form',compact('deparments','semesters','teachers'));
@@ -82,19 +81,25 @@ class CoverPageController extends Controller
                         'printed_balance'=>$page_price,
                     ]);
 
-                    $fileName = Auth::user()->id.'.pdf';
-                     // Update with the actual name of your PDF file
-                    $filePath = public_path('pdf/' . $fileName);
-                    if (file_exists($filePath)) {
-                        $request->session()->put('message', 'exists');
-                    }
-                    Toastr::success('Coverpage Generated !!');
-                    return redirect()->route('student.GetCoverPageForm');
+                    return redirect()->route('student.CoverpageStatus');
 
                 }else{
                     Toastr::error('Please Recharge your account...','Insufficient Balance!');
                     return redirect()->route('student.GetCoverPageForm');
                 }
             }
+    }
+
+    public function CoverpageStatus(){
+
+        $fileName = Auth::user()->id.'.pdf';
+        // Update with the actual name of your PDF file
+       $filePath = public_path('pdf/' . $fileName);
+       if (file_exists($filePath)) {
+           Session::put('message', 'Your Coverpage has been Generated. Click on Print Button to Print.');
+        }else{
+           Session::put('status', 'No files available to Print.');
+       }
+       return view('frontend.pages.cover_page.status');
     }
 }
