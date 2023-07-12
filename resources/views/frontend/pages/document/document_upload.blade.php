@@ -108,7 +108,7 @@ Print Documents
     <div class="card mb-4">
       <div class="card-body">
         <div class="upload-form">
-          <form action="{{ route('student.GetDocument') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('student.UploadDocument') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
               <label for="pdfFile">Upload your PDF file:</label>
@@ -118,7 +118,12 @@ Print Documents
                 </div>
                 <div class="upload-area-text p-3">Click here to choose file</div>
               </div>
-              <input type="file" id="pdfFile" name="pdf" accept=".pdf" style="display: none;">
+              <input type="file" id="pdfFile" name="file_upload" accept=".pdf" style="display: none;" class="@error('file_upload')
+              is-invalid
+              @enderror">
+              @error('file_upload')
+              <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+              @enderror
             </div>
             <div class="form-group">
               <button type="submit" id="uploadButton" class="upload-button">Upload</button>

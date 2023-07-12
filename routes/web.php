@@ -64,6 +64,8 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
     /*AJAX Call */
     Route::get('subject/ajax/{semester_name}', [CoverPageController::class, 'loadSubjectAjax'])->name('loadSubject.ajax');
 
+    Route::get('/totalprice/ajax/{totalprice}', [DocumentController::class, 'processPrice'])->name('getPrice.ajax');
+
     /*user profile modification route*/
     Route::get('change_password', [UserController::class, 'changePasswordPage'])->name('student.changePasswordPage');
     Route::post('change_password', [UserController::class, 'changePassword'])->name('student.changePassword');
@@ -74,7 +76,7 @@ Route::prefix('student')->middleware(['auth', 'IsSystemUser'])->group(function (
 
     /*route for document*/
     Route::get('document', [DocumentController::class, 'DocumentPage'])->name('student.DocumentPage');
-    Route::post('count_document_page',[DocumentController::class, 'countColorAndBWPages'])->name('student.GetDocument');
+    Route::post('upload_document',[DocumentController::class, 'uploadDocument'])->name('student.UploadDocument');
 });
 
 
