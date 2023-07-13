@@ -10,6 +10,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TotalPrintedCoverPage;
+use App\Models\TotalPrintedUserDocument;
 
 class dashboardController extends Controller
 {
@@ -21,6 +22,7 @@ class dashboardController extends Controller
         $semester=Semester::count();
         $students=User::where('role_id',2)->count();
         $print_cover_page=TotalPrintedCoverPage::count();
+        $print_user_document=TotalPrintedUserDocument::count();
         return view('backend.pages.dashboard',compact(
             'department',
             'teacher',
@@ -28,6 +30,7 @@ class dashboardController extends Controller
             'students',
             'semester',
             'print_cover_page',
+            'print_user_document'
         ));
     }
 }

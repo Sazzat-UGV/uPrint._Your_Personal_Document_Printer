@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\DocumentUploadRequest;
+use App\Models\TotalPrintedUserDocument;
 use Intervention\Image\ImageManagerStatic as Image;
 
 
@@ -62,11 +63,10 @@ class DocumentController extends Controller
             'balance' => $new_balance,
         ]);
 
-
-        // TotalPrintedCoverPage::create([
-        //     'user_id'=>Auth::user()->id,
-        //     'printed_balance'=>$page_price,
-        // ]);
+        TotalPrintedUserDocument::create([
+            'user_id'=>Auth::user()->id,
+            'printed_balance'=>$totalprice,
+        ]);
         return response()->json($totalprice, 200);
     }
 
