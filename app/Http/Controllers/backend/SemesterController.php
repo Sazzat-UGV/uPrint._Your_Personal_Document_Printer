@@ -78,10 +78,16 @@ class SemesterController extends Controller
      */
     public function destroy(string $slug)
     {
-        $semester=Semester::whereSlug($slug)->first();
+        $semester = Semester::whereSlug($slug)->first();
+
+        if ($semester->subjects()->count() > 0) {
+            Toastr::error('Cannot delete the semester because it contains subjects.');
+            return redirect()->route('semester.index');
+        }
+
         $semester->delete();
 
-        Toastr::success('Semester Delete Successfully!');
+        Toastr::success('Semester deleted successfully!');
         return redirect()->route('semester.index');
     }
 }

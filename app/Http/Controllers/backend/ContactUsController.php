@@ -35,7 +35,7 @@ class ContactUsController extends Controller
         $contact=Contact::where('id',$id)->first();
         $contact->delete();
 
-        Toastr::success('Contact Message has been Delete Successfully!');
+        Toastr::success('Message has been Delete Successfully!');
         return back();
     }
 }

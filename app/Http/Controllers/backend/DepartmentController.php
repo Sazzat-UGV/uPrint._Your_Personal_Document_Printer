@@ -17,7 +17,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments=Department::latest('id')->select('id','name','slug','full_name','is_active')->get();
+        $departments=Department::latest('id')->select('id','name','slug','full_name','is_active','add_subject')->get();
         return view('backend.pages.department.index',compact('departments'));
     }
 
@@ -72,6 +72,7 @@ class DepartmentController extends Controller
             'full_name'=>$request->department_full_name,
             'slug'=>Str::slug($request->name),
             'is_active'=>$request->filled('is_active'),
+            'add_subject'=>$request->filled('add_subject'),
         ]);
 
         Toastr::success('Department Update Successfully!');
@@ -84,6 +85,11 @@ class DepartmentController extends Controller
     public function destroy(string $slug)
     {
         $department=Department::whereSlug($slug)->first();
+        if ($department->teachers()->count() > 0 || $department->subjects()->count() > 0) {
+            Toastr::error('Cannot delete the department because it contains subjects and teachers.');
+            return redirect()->route('department.index');
+        }
+
         $department->delete();
 
         Toastr::success('Department Delete Successfully!');

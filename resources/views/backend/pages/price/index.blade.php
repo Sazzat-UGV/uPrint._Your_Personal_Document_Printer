@@ -23,7 +23,7 @@
                     <tr>
                         <th>#</th>
                         <th>Last Modified</th>
-                        <th>Paper Type</th>
+                        <th>Document Type</th>
                         <th>Paper Price</th>
                         <th>Show to User</th>
                         <th>Options</th>

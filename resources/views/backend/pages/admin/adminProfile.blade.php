@@ -42,7 +42,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                                             @enderror
-                            <p class="text-muted mb-0">Allowed JPG. Max size of 2M</p>
+                            <p class="text-muted mb-0">Allowed JPG. Max size of 5M</p>
                         </div>
                     </div>
                 </div>

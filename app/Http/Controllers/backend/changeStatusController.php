@@ -28,6 +28,21 @@ class changeStatusController extends Controller
         ]);
     }
 
+    /*Add Department Subject*/
+    public function addDepartmentSubject($department_id){
+        $department=Department::find($department_id);
+        if($department->add_subject == 1){
+            $department->add_subject=0;
+        }else{
+            $department->add_subject=1;
+        }
+        $department->update();
+        return response()->json([
+            'type' =>'success',
+            'message' =>'Status Updated',
+        ]);
+    }
+
 
     /*Change Teacher Status*/
     public function activeTeacher($teacher_id){

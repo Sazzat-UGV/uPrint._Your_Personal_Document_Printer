@@ -118,7 +118,7 @@
                 </div>
                 <div class="row d-flex justify-content-center">
                     @foreach ($price as $item)
-                        <div class="col-lg-6 col-sm-6 col-sm-12 col-xs-12 pb-5 ">
+                        <div class="col-lg-4 col-sm-4 col-sm-12 col-xs-12 pb-5 ">
                             <div class="pricing_design ">
                                 <div class="single-pricing">
                                     <div class="price-head text-center">

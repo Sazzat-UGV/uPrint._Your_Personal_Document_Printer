@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('full_name')->unique();
             $table->string('slug');
             $table->boolean('is_active')->default(true);
+            $table->boolean('add_subject')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -19,8 +19,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects=Subject::with('semester:id,semester_name','department:id,name,is_active')->latest('id')->select('id','semester_id','department_id', 'slug','subject_name','subject_code','updated_at','is_active')->get();
-        // return $subjects;
+        $subjects=Subject::with('semester:id,semester_name','department:id,name,is_active')->latest('id')->select('id','semester_id','department_id', 'slug','subject_name','subject_code','is_active')->get();
         return view('backend.pages.subject.index',compact('subjects'));
     }
 
@@ -31,7 +30,7 @@ class SubjectController extends Controller
     public function create()
     {
         $semesters=Semester::select('id','semester_name')->get();
-        $departments=Department::where('is_active',1)->latest('id')->select('id','name')->get();
+        $departments=Department::where('is_active',1)->where('add_subject',1)->latest('id')->select('id','name')->get();
         return view('backend.pages.subject.create',compact('semesters','departments'));
     }
 
@@ -66,7 +65,7 @@ class SubjectController extends Controller
     public function edit(string $slug)
     {
         $subject=Subject::whereSlug($slug)->first();
-        $departments=Department::where('is_active',1)->latest('id')->select('id','name')->get();
+        $departments=Department::where('is_active',1)->where('add_subject',1)->latest('id')->select('id','name')->get();
         $semesters=Semester::select('id','semester_name')->get();
         return view('backend.pages.subject.edit',compact('subject','semesters','departments'));
     }

@@ -5,15 +5,16 @@
 
 @push('admin_style')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 @endpush
 @section('content')
-@include('backend.layout.inc.breadcumb', ['main_page' => 'Backup Management', 'sub_page' => 'Backup Index'])
+@include('backend.layout.inc.breadcumb', ['main_page' => 'System Backup', 'sub_page' => 'Backup Index'])
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="d-flex justify-content-end align-items-center my-3">
 
-                    <button type="button" class="btn btn-primary me-4" onclick="event.preventDefault(); document.getElementById('new-backup-form').submit();">Create Backup</button>
+                    <button type="button" class="btn btn-primary me-4" onclick="event.preventDefault(); document.getElementById('new-backup-form').submit();"> <i class="fas fa-plus-circle"></i> Create Backup</button>
                     <form action="{{ route('backup.store') }}" method="post" class="d-none" id="new-backup-form">
                     @csrf
                 </form>

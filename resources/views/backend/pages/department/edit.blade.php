@@ -57,7 +57,16 @@ Edit Department
                     checked
                     @endif>
                 </div>
-
+            </div>
+            <div class=" row mb-3">
+                <label for="addsubject" class="col-sm-2 col-form-label">
+                    Add Subject
+                </label>
+                <div class="col-sm-10 form-check form-switch">
+                    <input type="checkbox" class="form-check-input" name="add_subject" role="switch" id="addsubject" @if ($department->add_subject)
+                    checked
+                    @endif>
+                </div>
             </div>
             <div class="row justify-content-end">
               <div class="col-sm-10">

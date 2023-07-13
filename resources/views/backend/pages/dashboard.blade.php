@@ -116,6 +116,24 @@ Admin Dashboard
     </div>
 
 
+
+    <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-start justify-content-between">
+            <div class="avatar flex-shrink-0">
+                <i class="menu-icon tf-icons bx bx-message-rounded-detail"></i>
+            </div>
+          </div>
+          <span class="fw-semibold d-block mb-1">Queries</span>
+          <h3 class="card-title mb-2">{{ $queries }}</h3>
+        </div>
+      </div>
+    </div>
+
+
+
+
     <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
       <div class="card">
         <div class="card-body">

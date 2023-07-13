@@ -126,7 +126,7 @@
       <li class="menu-item">
         <a href="{{ route('admin.contactusIndex') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-message-rounded-detail"></i>
-          <div data-i18n="Tables">Contacts</div>
+          <div data-i18n="Tables">Queries</div>
         </a>
       </li>
       <li class="menu-item">
@@ -147,7 +147,7 @@
       <li class="menu-item">
         <a href="{{ route('backup.index') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-data"></i>
-          <div data-i18n="Tables">Backup Management</div>
+          <div data-i18n="Tables">System Backup</div>
         </a>
       </li>
       <li class="menu-item">

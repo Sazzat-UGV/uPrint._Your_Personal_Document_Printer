@@ -22,7 +22,7 @@ class UserImageUploadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_image'=>'nullable|image|max:2048'
+            'user_image'=>'required|image|max:5120'
         ];
     }
 }

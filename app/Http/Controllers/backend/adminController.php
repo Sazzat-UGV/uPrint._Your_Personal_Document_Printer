@@ -61,8 +61,13 @@ class adminController extends Controller
             User::findorFail(Auth::user()->id)->update([
                 'password'=>Hash::make($request->password),
             ]);
+            // return redirect()->route('admin.dashboard');
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
             Toastr::success('Password Updated Successfully!');
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.loginPage');
+
         }else{
             Toastr::error('Current Password does not match with old Password');
             return redirect()->route('admin.changePassPage');

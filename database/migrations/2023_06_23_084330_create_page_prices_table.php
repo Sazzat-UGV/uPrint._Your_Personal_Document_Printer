@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('page_prices', function (Blueprint $table) {
             $table->id();
             $table->string('paper_type');
+            $table->string('paper_slug');
             $table->unsignedBigInteger('paper_price');
             $table->boolean('show_on_hompage');
             $table->timestamps();

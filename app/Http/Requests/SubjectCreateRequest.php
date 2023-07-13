@@ -24,7 +24,7 @@ class SubjectCreateRequest extends FormRequest
         return [
             'semester_id'=>'required|numeric',
             'department_id'=>'required|numeric',
-            'subject_name'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255',
+            'subject_name'=>'required|string|max:255',
             'subject_code'=>'required|string|max:50',
         ];
     }

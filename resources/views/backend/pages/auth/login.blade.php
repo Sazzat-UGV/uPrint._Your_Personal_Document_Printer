@@ -43,6 +43,7 @@
     <!-- Page CSS -->
     <!-- Page -->
     <link rel="stylesheet" href="{{ asset('assets/backend') }}/vendor/css/pages/page-auth.css" />
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <!-- Helpers -->
     <script src="{{ asset('assets/backend') }}/vendor/js/helpers.js"></script>
 
@@ -132,5 +133,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
   </body>
 </html>

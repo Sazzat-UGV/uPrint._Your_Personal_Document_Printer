@@ -22,7 +22,7 @@ class CoverPageController extends Controller
 
 
     public function getCoverPageForm(){
-        $deparments=Department::where('is_active',1)->latest('id')->select('id','full_name')->get();
+        $deparments=Department::where('is_active',1)->where('add_subject',1)->latest('id')->select('id','full_name')->get();
         $semesters=Semester::select('id','semester_name')->get();
         $teachers=Teacher::where('is_active',1)->select('id','teacher_name')->get();
 
@@ -66,7 +66,7 @@ class CoverPageController extends Controller
             ))->setPaper('a4','portrait')->save(public_path('pdf/'.$user.'.pdf'));
             // return $pdf->stream('info.pdf', array("Attachment" => 0));
             if($pdf){
-                $page=PagePrice::where('paper_type','Color')->first();
+                $page=PagePrice::where('paper_slug','assignment-cover-page')->first();
                 $user=User::whereId(Auth::user()->id)->first();
                 $page_price=$page->paper_price;
                 $account_balance=$user->balance;

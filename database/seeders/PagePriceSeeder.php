@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\PagePrice;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PagePriceSeeder extends Seeder
 {
@@ -13,18 +14,21 @@ class PagePriceSeeder extends Seeder
      */
     public function run(): void
     {
+        $paperType=[
+            'Assignment Cover Page',
+            'Educational Document',
+            'University Document',
+        ];
 
-        PagePrice::updateOrCreate([
-            'paper_type'=>'Black & White',
-            'paper_price'=>5,
-            'show_on_hompage'=>1,
-        ]);
+        foreach($paperType as $type){
+            PagePrice::updateOrCreate([
+                'paper_type'=>$type,
+                'paper_slug'=>Str::slug($type),
+                'paper_price'=>5,
+                'show_on_hompage'=>1,
+            ]);
+        }
 
-        PagePrice::updateOrCreate([
-            'paper_type'=>'Color',
-            'paper_price'=>5,
-            'show_on_hompage'=>0,
-        ]);
     }
 }
 

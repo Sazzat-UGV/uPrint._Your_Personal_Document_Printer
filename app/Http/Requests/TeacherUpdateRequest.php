@@ -23,8 +23,8 @@ class TeacherUpdateRequest extends FormRequest
     {
         return [
             'department_id'=>'required|numeric',
-            'Teacher_name'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255',
-            'Teacher_designation'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255',
+            'Teacher_name'=>'required|string|max:255',
+            'Teacher_designation'=>'required|string|max:255',
             'is_active'=>'nullable'
         ];
     }

@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Semester extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-    protected $guarded=['id'];
+    protected $guarded = ['id'];
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }

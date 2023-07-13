@@ -42,7 +42,8 @@ class DocumentController extends Controller
         if(file_exists($path)){
             $pdftext = file_get_contents($path);
         $totalPage = preg_match_all("/\/Page\W/", $pdftext, $dummy);
-        $page=PagePrice::where('paper_type','Color')->first();
+        // $page=PagePrice::where('paper_type','Color')->first();
+        $page=PagePrice::where('paper_slug','educational-document')->first();
 
         $per_page_price=$page->paper_price;
         $finalPrice=$totalPage*$per_page_price;

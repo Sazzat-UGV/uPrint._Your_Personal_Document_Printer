@@ -12,4 +12,13 @@ class Department extends Model
 
     protected $guarded=['id'];
 
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class);
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }
