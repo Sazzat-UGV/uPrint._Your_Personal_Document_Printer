@@ -13,7 +13,7 @@ class AccountController extends Controller
     public function IndexPage()
     {
         $students=User::with('department:id,name')->where('role_id',2)->where('is_system_admin',0)->latest('updated_at')->select('id','updated_at','name','student_id','balance','department_id')->get();
-        
+
         return view('backend.pages.account.index',compact('students'));
     }
 
@@ -60,10 +60,11 @@ class AccountController extends Controller
     }
 
 
+
     public function RemoveBalance(Request $request, $student_id)
     {
         $validation = $request->validate([
-            'remove_amount' => 'required|numeric'
+            'discharge_amount' => 'required|numeric'
         ]);
 
         $user = User::where('student_id', $student_id)->first();
@@ -75,14 +76,20 @@ class AccountController extends Controller
         }
 
         $old_balance = $user->balance;
-        $new_balance = $old_balance - $request->remove_amount;
+        if($request->discharge_amount > $old_balance){
+            Toastr::error('Discherge amount cannot be less than your current Balance.');
+            return redirect()->route('admin.accountIndexPage');
+        }else{
+            $new_balance = $old_balance - $request->discharge_amount;
 
-        $user->update([
-            'balance' => $new_balance,
-        ]);
+            $user->update([
+                'balance' => $new_balance,
+            ]);
 
-        Toastr::success('Account Discharge Successfully!');
-        return redirect()->route('admin.accountIndexPage');
+            Toastr::success('Account Discharge Successfully!');
+            return redirect()->route('admin.accountIndexPage');
+        }
+
     }
 
 }

@@ -41,7 +41,7 @@ Student Password Reset
 
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-warning">Change</button>
+                            <button type="submit" class="btn btn-warning">Reset</button>
                         </div>
                     </div>
                 </form>

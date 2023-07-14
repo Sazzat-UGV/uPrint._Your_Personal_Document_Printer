@@ -119,7 +119,7 @@
 
       <li class="menu-item">
         <a href="{{ route('admin.studentIndexPage') }}" class="menu-link">
-          <i class="menu-icon tf-icons bx bxs-user"></i>
+          <i class="menu-icon tf-icons bx bx-user"></i>
           <div data-i18n="Tables">Students</div>
         </a>
       </li>
@@ -133,6 +133,18 @@
         <a href="{{ route('admin.PagePriceIndex') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-dollar"></i>
           <div data-i18n="Tables">Pricing</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-search"></i>
+          <div data-i18n="Tables">Search Student <span class="text-danger">***</span></div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-upload"></i>
+          <div data-i18n="Tables">Upload Document <span class="text-danger">***</span></div>
         </a>
       </li>
 

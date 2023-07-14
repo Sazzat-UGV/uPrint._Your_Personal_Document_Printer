@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 @section('title')
-    Remove Balance
+    Discharge Account
 @endsection
 
 @push('admin_style')
@@ -8,7 +8,7 @@
 @endpush
 
 @section('content')
-    @include('backend.layout.inc.breadcumb', ['main_page' => 'Accounts', 'sub_page' => 'Remove Balance'])
+    @include('backend.layout.inc.breadcumb', ['main_page' => 'Accounts', 'sub_page' => 'Discharge Account'])
 
     <div class="row">
         <div class="col-md-12">
@@ -22,12 +22,12 @@
                             <input type="text" value="{{ $item->balance }}" hidden>
 
                             <div class="mb-3 col-md-12">
-                                <label for="remove_amount" class="form-label">Remove Amount<span class="text-danger">*</span></label>
-                                <input type="text" id="remove_amount" name="remove_amount"
-                                class="form-control @error('remove_amount')
+                                <label for="discharge_amount" class="form-label">Discharge Amount<span class="text-danger">*</span></label>
+                                <input type="text" id="discharge_amount" name="discharge_amount"
+                                class="form-control @error('discharge_amount')
                                 is-invalid
                                 @enderror" />
-                                @error('remove_amount')
+                                @error('discharge_amount')
                                 <span class="invalid-feedback"
                                 role="alert"><strong>{{ $message }}</strong></span>
                                 @enderror
@@ -36,7 +36,7 @@
 
 
                             <div class="mt-2">
-                                <button type="submit" class="btn btn-primary me-2">Remove Balance</button>
+                                <button type="submit" class="btn btn-primary me-2">Discharge</button>
                             </div>
                         </form>
                         @endforeach

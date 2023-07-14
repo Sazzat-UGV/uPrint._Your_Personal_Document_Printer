@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 @section('title')
-    Add Balance
+Recharge Account
 @endsection
 
 @push('admin_style')
@@ -8,7 +8,7 @@
 @endpush
 
 @section('content')
-    @include('backend.layout.inc.breadcumb', ['main_page' => 'Accounts', 'sub_page' => 'Add Balance'])
+    @include('backend.layout.inc.breadcumb', ['main_page' => 'Accounts', 'sub_page' => 'Recharge Account'])
 
     <div class="row">
         <div class="col-md-12">
@@ -36,7 +36,7 @@
 
 
                             <div class="mt-2">
-                                <button type="submit" class="btn btn-primary me-2">Add Balance</button>
+                                <button type="submit" class="btn btn-primary me-2">Recharge</button>
                             </div>
                         </form>
                         @endforeach

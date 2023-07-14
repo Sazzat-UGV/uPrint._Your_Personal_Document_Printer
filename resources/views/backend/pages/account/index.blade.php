@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Last Modify</th>
+                        <th>Last Recharge</th>
                         <th>Name</th>
                         <th>Student ID</th>
                         <th>Department</th>
@@ -46,9 +46,9 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{ route('admin.AddBalancePage',['student_id'=>$student->student_id]) }}"><i
-                                                class="bx bx-plus-circle me-1"></i> Add Balance</a>
+                                                class="bx bx-plus-circle me-1"></i> Recharge Account</a>
                                         <a class="dropdown-item" href="{{ route('admin.RemoveBalancePage',['student_id'=>$student->student_id]) }}"><i
-                                                class="bx bx-minus-circle me-1"></i> Remove Balance</a>
+                                                class="bx bx-minus-circle me-1"></i> Discharge Account</a>
 
                                     </div>
                                 </div>
